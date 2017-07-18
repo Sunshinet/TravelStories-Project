@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    form(action="/ads", method="POST")
+        label
+            | Item Name
+            input(type="text")
+        label
+            | Image URL
+            input(type="text")
+        label
+            | Price
+            input(type="text")
+            button(type="submit")
+                | Submit

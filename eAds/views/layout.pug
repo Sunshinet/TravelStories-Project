@@ -10,4 +10,17 @@ html(lang='en')
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
   body
+    h1= title
+    p Welcome to #{title}
+    ul
+      li
+        a(href="/")
+          | Home
+      li
+        a(href="/ads")
+          | All Ads
+      li
+        a(href="/add")
+          | Add New Ad
     block content
+    
