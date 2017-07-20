@@ -5,7 +5,9 @@ const nodemon = require('gulp-nodemon');
 // const plumber = require('gulp-plumber');
 const livereload = require('gulp-livereload');
 
-
+gulp.task('server:start', () => {
+  return require('./server');
+});
 gulp.task('develop', function() {
   livereload.listen();
   nodemon({
