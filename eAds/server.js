@@ -1,18 +1,15 @@
 /* eslint-disable no-console */
 
-const async = () => {
-    return Promise.resolve();
-};
 
-const config = require('./server.config/');
+const ServerConfig = require('./server.config/');
 
-async()
-    .then(() => require('./db/').init(config.connectionString))
+Promise.resolve()
+    .then(() => require('./db/').init(ServerConfig.connectionString))
     .then((db) => require('./data').init(db))
     .then((data) => require('./app').init(data))
     .then((app) => {
-        app.listen(config.port, () =>
-            console.log(`server running at :${config.port}`));
+        app.listen(ServerConfig.port, () =>
+            console.log(`Server is running at :${ServerConfig.port}`));
     })
     .catch((err) => {
         console.log(err);

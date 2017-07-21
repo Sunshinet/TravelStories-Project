@@ -3,7 +3,7 @@ const express = require('express');
 const init = (data) => {
     const app = express();
 
-    require('./app.config/').applyTo(app);
+    require('./app.config/').mainConfig(app);
    // require('./auth').applyTo(app, data);
 
     // app.use(require('connect-flash')());
