@@ -5,7 +5,7 @@ const { MongoClient } = require('mongodb');
 const init = (connectionString) => {
     return MongoClient.connect(connectionString)
         .then((db) => {
-            console.log('Databases connected');
+            console.log('Connection to dabase server OK');
             return db;
         });
 };
