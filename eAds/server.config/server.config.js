@@ -1,5 +1,5 @@
 const port = 3000;
-const connectionString = 'mongodb://localhost/eAds-db';
-// const sessionSecret = 'Purple Unicorn';
+const connectionString = 'mongodb://localhost/stories';
+const sessionSecret = 'secretSession';
 
-module.exports = { port, connectionString };
+module.exports = { port, connectionString, sessionSecret };

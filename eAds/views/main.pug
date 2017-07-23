@@ -1,0 +1,19 @@
+include nav
+include homeSubheaderMixin
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    title= title
+    
+    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
+    block css
+      link(rel='stylesheet', href='../public/css/style.css')
+    block js
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body(style="background-image: url('../public/pictures/wallpapers-luxury.jpg');")
+      +nav()
+      +homeSubheaderMixin()
+      block content

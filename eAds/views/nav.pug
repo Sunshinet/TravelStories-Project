@@ -1,0 +1,25 @@
+mixin nav()
+
+ nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      a.navbar-brand(href='/') TravellStories
+    ul.nav.navbar-nav
+      li.active
+        a(href='/team') 
+            | Our Team
+      li
+        a(href='/stories') 
+            | Stories
+      li
+        a(href='/places')
+            | Places
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='/auth/registraton')
+          span.glyphicon.glyphicon-user
+          |  Registration
+      li
+        a(href='/auth/login')
+          span.glyphicon.glyphicon-log-in
+          |  Login
