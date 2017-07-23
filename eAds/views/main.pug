@@ -1,4 +1,5 @@
 include nav
+include homeSubheaderMixin
 
 doctype html
 html(lang='en')
@@ -15,4 +16,5 @@ html(lang='en')
         script(src='http://localhost:35729/livereload.js')
   body(style="background-image: url('../public/pictures/wallpapers-luxury.jpg');")
       +nav()
+      +homeSubheaderMixin()
       block content

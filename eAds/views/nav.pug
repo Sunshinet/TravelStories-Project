@@ -20,10 +20,12 @@ mixin nav()
     if user
       ul.nav.navbar-nav.navbar-right
         li
-          =user.username
+          a(href='/users/getuserbyid')
+            =user.username
+        li
           form(action="/auth/sign-out" method="post")
             button
-              | Logout
+              span.glyphicon.glyphicon-log-out
     else
       ul.nav.navbar-nav.navbar-right
         li
