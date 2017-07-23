@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 
-const mainConfig = (app) => {
+const applyTo = (app) => {
     app.set('view engine', 'pug');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,4 +20,4 @@ const mainConfig = (app) => {
     app.use(cookieParser('keyboard cat'));
 };
 
-module.exports = { mainConfig };
+module.exports = { applyTo };

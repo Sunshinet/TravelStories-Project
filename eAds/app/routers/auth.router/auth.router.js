@@ -5,21 +5,21 @@ const attachTo = (app, data) => {
     const router = new Router();
     const controller = require('./controller').init(data);
     router
-        .get('/sign-up', (req, res) => {
+        .get('/register', (req, res) => {
             return controller.getSignUpForm(req, res);
         })
-        .get('/sign-in', (req, res) => {
+        .get('/login', (req, res) => {
             return controller.getSignInForm(req, res);
         })
-        .post('/sign-out', (req, res) => {
+        .post('/logout', (req, res) => {
             return controller.signOut(req, res);
         })
-        .post('/sign-up', (req, res) => {
+        .post('/register', (req, res) => {
             return controller.signUp(req, res);
         })
-        .post('/sign-in', passport.authenticate('local', {
+        .post('/login', passport.authenticate('local', {
             successRedirect: '/',
-            failureRedirect: '/auth/sign-in',
+            failureRedirect: '/auth/login',
             failureFlash: true,
         }));
     app.use('/auth', router);
