@@ -17,12 +17,20 @@ mixin nav()
       li
         a(href='/places')
             | Places
-    ul.nav.navbar-nav.navbar-right
-      li
-        a(href='/auth/register')
-          span.glyphicon.glyphicon-user
-          |  Registration
-      li
-        a(href='/auth/login')
-          span.glyphicon.glyphicon-log-in
-          |  Login
+    if user
+      ul.nav.navbar-nav.navbar-right
+        li
+          =user.username
+          form(action="/auth/sign-out" method="post")
+            button
+              | Logout
+    else
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/auth/sign-up')
+            span.glyphicon.glyphicon-user
+            |  Registration
+        li
+          a(href='/auth/sign-in')
+            span.glyphicon.glyphicon-log-in
+            |  Login

@@ -4,10 +4,10 @@ class StoriesController {
     }
 
     getSignUpForm(req, res) {
-        return res.render('auth/register');
+        return res.render('auth/sign-up');
     }
     getSignInForm(req, res) {
-        return res.render('auth/login');
+        return res.render('auth/sign-in');
     }
     signOut(req, res) {
         req.logout();
@@ -26,7 +26,7 @@ class StoriesController {
                 return this.data.users.create(bodyUser);
             })
             .then((dbUser) => {
-                return res.redirect('/auth/login');
+                return res.redirect('/auth/sign-in');
             })
             .catch((err) => {
                 req.flash('error', err);

@@ -1,19 +1,19 @@
+/* globals __dirname */
+
+const fs = require('fs');
+const path = require('path');
+
 const attachTo = (app, data) => {
     app.get('/', (req, res) => {
         return res.render('main', { title: 'TravellStories' });
     });
 
-    app.get('/auth/register', (req, res) => {
-        return res.render('auth/register', { title: 'reg' });
-    });
-
-    app.get('/auth/login', (req, res) => {
-        return res.render('auth/login', { title: 'login' });
-    });
-
-    app.get('/stories/form', (req, res) => {
-        return res.render('stories/form');
-    });
+    fs.readdirSync(__dirname)
+        .filter((file) => file.includes('.router'))
+        .forEach((file) => {
+            const modulePath = path.join(__dirname, file);
+            require(modulePath).attachTo(app, data);
+        });
 };
 
 module.exports = { attachTo };

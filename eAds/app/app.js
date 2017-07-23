@@ -3,7 +3,7 @@ const express = require('express');
 const init = (data) => {
     const app = express();
 
-    require('./app.config/').applyTo(app);
+    require('./config').applyTo(app);
     require('./auth').applyTo(app, data);
 
     app.use(require('connect-flash')());
@@ -18,4 +18,6 @@ const init = (data) => {
     return Promise.resolve(app);
 };
 
-module.exports = { init };
+module.exports = {
+    init,
+};

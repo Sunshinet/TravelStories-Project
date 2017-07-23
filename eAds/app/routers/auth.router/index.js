@@ -1,1 +1,1 @@
-module.export = require('./auth.router');
+module.exports = require('./router');
