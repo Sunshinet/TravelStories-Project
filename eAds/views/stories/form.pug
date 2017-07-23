@@ -1,0 +1,7 @@
+extends ../main
+block content
+  div.form
+      form(action="/stories" method="POST")
+        input.form-control(name="text" required type="text" placeholder="Enter text")
+        button.btn.btn-success
+           | Save

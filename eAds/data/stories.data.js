@@ -1,20 +1,14 @@
 const BaseMongoDbData = require('./base/base.data');
-const Story = require('./stories.data');
+const Stories = require('../models/stories');
 
 class StoriesData extends BaseMongoDbData {
     constructor(db) {
-        super(db, Story, Story);
+        super(db, Stories, Stories);
     }
-    getAllStories(){
-
+        _isModelValid(model) {
+        // custom validation 
+        return super._isModelValid(model);
     }
-    getStoriesById(){
-
-    }
-    getStoryByAuthor(){
-
-    }
-    getStoryByTile()
 }
 
 module.exports = StoriesData;

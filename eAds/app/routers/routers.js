@@ -10,6 +10,10 @@ const attachTo = (app, data) => {
     app.get('/auth/login', (req, res) => {
         return res.render('auth/login', { title: 'login' });
     });
+
+    app.get('/stories/form', (req, res) => {
+        return res.render('stories/form');
+    });
 };
 
 module.exports = { attachTo };
