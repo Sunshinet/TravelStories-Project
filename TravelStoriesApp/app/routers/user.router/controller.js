@@ -1,7 +1,7 @@
 const init = (data) => {
     const controller = {
         getUser(req, res) {
-            return data.users.findById()
+            return data.users.findById(+req.params.id)
                 .then(() => {
                     return res.render('user', {
                     });
@@ -11,6 +11,5 @@ const init = (data) => {
 
     return controller;
 };
-
 
 module.exports = { init };
