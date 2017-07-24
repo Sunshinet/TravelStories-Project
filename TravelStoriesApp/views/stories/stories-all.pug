@@ -1,9 +1,12 @@
 extends ../main
 block content
 
-
-        each stories in context
-         ul
-            li
+   each stories in context
+         
+        div
+          h1
+            a(href='#')
               =stories.text
-         div=stories.body
+          h2 
+              =stories.author
+        div=stories.body

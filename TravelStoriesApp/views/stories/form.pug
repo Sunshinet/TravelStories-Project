@@ -2,12 +2,12 @@ extends ../main
 block content
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=tqq5s6kwe7qtj2dn366ll67wl5kfqd4hpxzbamnrbt09fo86"></script>
   script
-            |tinymce.init({ selector:'textarea' , themes: "modern"});
+            |tinymce.init({ selector:'textarea' });
  
   div.form
     form(action="/stories" method="POST" id="useThis")
-      input.form-control(name="title" required type="text" placeholder="Title")
-      input.form-control(name="author" required type="text" placeholder="Author")
+      input.form-control(name="text" required type="text" placeholder="Enter text")
+      input.form-control(name="author" required type="text" placeholder="Enter text")
       button.btn.btn-success
         | Save
     textarea(name="body" form="useThis")#tinymce
