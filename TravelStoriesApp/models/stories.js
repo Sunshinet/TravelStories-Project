@@ -1,4 +1,4 @@
-class Stories {
+class Storie {
     static isValid(model) {
         return typeof model !== 'undefined' &&
             typeof model.text === 'string' &&
@@ -10,7 +10,7 @@ class Stories {
     }
 
     static toViewModel(model) {
-        const viewModel = new Stories();
+        const viewModel = new Storie();
         Object.keys(model)
             .forEach((prop) => {
                 viewModel[prop] = model[prop];
@@ -20,4 +20,4 @@ class Stories {
     }
 }
 
-module.exports = Stories;
+module.exports = Storie;

@@ -12,9 +12,9 @@ const attachTo = (app, data) => {
 
     app.post('/stories', (req, res) => {
         const story = req.body;
-
+            
         // validate item
-        return data.items.create(story)
+        return data.stories.create(story)
             .then((dbStory) => {
                 return res.redirect('/stories');
             })

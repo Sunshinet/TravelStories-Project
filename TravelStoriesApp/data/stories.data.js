@@ -1,9 +1,9 @@
 const BaseMongoDbData = require('./base/base.data');
-const Stories = require('../models/stories');
+const Storie = require('../models/stories');
 
 class StoriesData extends BaseMongoDbData {
     constructor(db) {
-        super(db, Stories, Stories);
+        super(db, Storie, Storie);
     }
         _isModelValid(model) {
         // custom validation 

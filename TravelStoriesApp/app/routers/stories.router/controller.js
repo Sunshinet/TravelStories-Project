@@ -3,7 +3,8 @@ const init = (data) => {
         getAll(req, res) {
             return data.stories.getAll()
                 .then((stories) => {
-                    return res.render('stories/all', {
+                    console.log(stories);
+                    return res.render('stories/stories-all', {
                         context: stories,
                     });
                 });
