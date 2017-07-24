@@ -1,7 +1,7 @@
 const init = (data) => {
     const controller = {
         getAll(req, res) {
-            return data.stories.getAll()
+            return data.places.getAll()
                 .then((places) => {
                     return res.render('places', {
                         // context: places,
