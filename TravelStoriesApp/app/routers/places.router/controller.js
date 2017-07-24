@@ -2,9 +2,9 @@ const init = (data) => {
     const controller = {
         getAll(req, res) {
             return data.stories.getAll()
-                .then((stories) => {
-                    return res.render('team', {
-                        context: stories,
+                .then((places) => {
+                    return res.render('places', {
+                        // context: places,
                     });
                 });
         },
