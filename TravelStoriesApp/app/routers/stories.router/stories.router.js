@@ -9,10 +9,15 @@ const attachTo = (app, data) => {
     app.get('/stories/form', (req, res) => {
         return res.render('stories/form');
     });
+    app.get('/stories/single-story', (req, res) => { // get single story
+        console.log(res);
+      return controller.getByTitleName(req, res);
+        // return res.render('stories/single-story');
+    });
+
 
     app.post('/stories', (req, res) => {
         const story = req.body;
-            
         // validate item
         return data.stories.create(story)
             .then((dbStory) => {

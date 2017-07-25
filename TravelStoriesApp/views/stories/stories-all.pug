@@ -5,8 +5,8 @@ block content
          
         div
           h1
-            a(href='#')
-              =stories.text
+            a(href='/stories/single-story?title=' + stories.titleStory)
+              =stories.titleStory
           h2 
               =stories.author
         div=stories.body

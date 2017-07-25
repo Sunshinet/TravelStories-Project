@@ -10,14 +10,18 @@ class BaseMongoDbData {
     }
 
     filterBy(props) {
-        return this.collection.find(props)
-            .toArray();
+        return this.collection.find({ props });
+    }
+
+     findOne(props) {
+        return this.collection.findOne({ props });
     }
 
     getAll() {
         return this.collection.find()
             .toArray()
             .then((models) => {
+                console.log(models);
                 if (this.ModelClass.toViewModel) {
                     return models.map(
                         (model) => this.ModelClass.toViewModel(model)

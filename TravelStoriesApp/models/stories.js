@@ -1,8 +1,9 @@
 class Storie {
     static isValid(model) {
         return typeof model !== 'undefined' &&
-            typeof model.text === 'string' &&
-            model.text.length > 3;
+            typeof model.titleStory === 'string' &&
+            model.titleStory.length > 3 &&
+            typeof model.body === 'string';
     }
 
     get id() {

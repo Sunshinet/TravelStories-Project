@@ -3,12 +3,17 @@ const init = (data) => {
         getAll(req, res) {
             return data.stories.getAll()
                 .then((stories) => {
-                    console.log(stories);
                     return res.render('stories/stories-all', {
                         context: stories,
                     });
                 });
         },
+       getByTitleName(req, res) {
+           return data.stories.getByTitle(req.titleStory)
+               .then((t) => {
+                   console.log(t);
+           });
+       },
     };
 
     return controller;
