@@ -4,7 +4,7 @@
 const ServerConfig = require('./server.config/');
 
 Promise.resolve()
-    .then(() => require('./db').init(ServerConfig.connectionStringAWS))
+    .then(() => require('./db').init(ServerConfig.connectionString))
     .then((db) => require('./data').init(db))
     .then((data) => require('./app').init(data))
     .then((app) => {

@@ -1,12 +1,16 @@
 extends ../main
 block content
-
-   each stories in context
+  if context.length 
+   each story in context
          
         div
+          h1 
+            =story.place
           h1
-            a(href='/stories/single-story?title=' + stories.titleStory)
-              =stories.titleStory
-          h2 
-              =stories.author
-        div=stories.body
+            a(href='/stories/single-story/' + story.id)
+              =story.titleStory
+        div=story.body
+  else 
+      p
+        h1 
+          | no stories

@@ -9,19 +9,20 @@ class BaseMongoDbData {
         this.collection = this.db.collection(this.collectionName);
     }
 
-    filterBy(props) {
-        return this.collection.find({ props });
+    filterBy(props) { // props 
+        return this.collection.find(props)
+        .toArray();
     }
 
-     findOne(props) {
-        return this.collection.findOne({ props });
-    }
+    //  findOne(props) {
+    //     return this.collection.findOne(props)
+    //     .toArray();
+    // }
 
     getAll() {
         return this.collection.find()
             .toArray()
             .then((models) => {
-                console.log(models);
                 if (this.ModelClass.toViewModel) {
                     return models.map(
                         (model) => this.ModelClass.toViewModel(model)
@@ -70,8 +71,8 @@ class BaseMongoDbData {
     }
 
     _isModelValid(model) {
-        if ('undefined' === typeof this.validator ||
-            'function' !== typeof this.validator.isValid) {
+        if (typeof this.validator ==='undefined' ||
+            typeof this.validator.isValid !== 'function' ) { // if we don`t want validator
             return true;
         }
 
