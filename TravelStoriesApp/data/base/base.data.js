@@ -53,7 +53,7 @@ class BaseMongoDbData {
         return this.filterBy(props)
             .then(([model]) => {
                 if (!model) {
-                    model = {};
+                     model = props;
                     return this.collection.insert(model)
                         .then(() => {
                             return model;

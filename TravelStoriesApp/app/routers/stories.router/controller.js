@@ -18,15 +18,16 @@ const init = (data) => {
 
             create(req, res) {
            const story = req.body; //взиаме бодито на формата
-                    console.log(story);
+                 
         // validate item
           const place = {
             name: story.place,    //взиамме категория което е в боди
         };
-        console.log(place);
+      //  console.log(place);
+        
 
         const user = req.user;     //взимаме юзъра, който го създава
-            console.log(user)
+           
         story.user = {              // създаваме в тудуто колекция юзър , която съзържа данните на юзъра
             id: user._id,
             username: user.username,
@@ -38,6 +39,7 @@ const init = (data) => {
                 data.places.findOrCreateBy(place), //намери или създай, защото може вече да има такава категория //tuka ima bug?!?!?!?
             ])
             .then(([dbStory, dbPlaces]) => {
+                console.log(dbStory, dbPlaces);
                 dbPlaces.name = story.place;
                 dbPlaces.story = dbPlaces.story || [];
                 dbPlaces.story.push({
