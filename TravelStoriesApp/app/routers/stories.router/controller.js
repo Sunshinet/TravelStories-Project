@@ -27,7 +27,7 @@ const init = (data) => {
         
 
         const user = req.user;     //взимаме юзъра, който го създава
-           
+          
         story.user = {              // създаваме в тудуто колекция юзър , която съзържа данните на юзъра
             id: user._id,
             username: user.username,
@@ -39,7 +39,6 @@ const init = (data) => {
                 data.places.findOrCreateBy(place), //намери или създай, защото може вече да има такава категория //tuka ima bug?!?!?!?
             ])
             .then(([dbStory, dbPlaces]) => {
-                console.log(dbStory, dbPlaces);
                 dbPlaces.name = story.place;
                 dbPlaces.story = dbPlaces.story || [];
                 dbPlaces.story.push({
@@ -60,11 +59,12 @@ const init = (data) => {
                     body: dbStory.body,
                     place: dbStory.place,
                 });
+                 console.log(user);
 
                 return Promise.all([
-                    this.data.stories.updateById(dbStory),
-                    this.data.places.updateById(dbPlaces),
-                    this.data.users.updateById(user),
+                    data.stories.updateById(dbStory),
+                    data.places.updateById(dbPlaces),
+                    data.users.updateById(user),
                 ]);
             })
             .then(() => {
