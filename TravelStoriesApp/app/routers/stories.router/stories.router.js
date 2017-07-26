@@ -2,7 +2,7 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
 
     app.get('/stories', (req, res) => {
-        // return controller.getAll(req, res);
+        return controller.getAll(req, res);
     });
 
     app.get('/stories/form', (req, res) => {
