@@ -2,7 +2,7 @@ extends ../main
 
 block content
     form(action='/auth/sign-up', method="POST")
-        input(type="text" name="username" placeholder="Username")
-        input(type="password" name="password" placeholder="Password")
+        input(type="text" name="username" required placeholder="Username")
+        input(type="password" name="password" required placeholder="Password")
         button
             | Register

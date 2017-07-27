@@ -1,6 +1,8 @@
 {
   "name": "travel-stories",
   "version": "0.5.0",
+  "license": "MIT",
+  "author": "Team quattro @TelerikAcademy",
   "main": "app.js",
   "dependencies": {
     "babel-eslint": "^7.2.3",
