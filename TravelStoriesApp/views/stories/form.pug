@@ -6,8 +6,8 @@ block content
  
   div.form
     form(action="/stories" method="POST" id="useThis")
-      input.form-control(name="titleStory" required type="text" placeholder="Enter text")
-      input.form-control(name="place" required type="text" placeholder="Enter text")
+      input.form-story(name="titleStory" required type="text" placeholder="Enter text")
+      input.form-story(name="place" required type="text" placeholder="Enter text")
       button.btn.btn-success
         | Save
     textarea(name="body" form="useThis")#tinymce

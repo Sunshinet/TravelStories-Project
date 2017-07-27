@@ -1,8 +1,27 @@
 extends ../main
 
 block content
-    form(action='/auth/sign-up', method="POST")
-        input(type="text" name="username" required placeholder="Username")
-        input(type="password" name="password" required placeholder="Password")
-        button
-            | Register
+    //- form(action='/auth/sign-up', method="POST")
+    //-     input(type="text" name="username" placeholder="Username")
+    //-     input(type="password" name="password" placeholder="Password")
+    //-     button
+    //-         | Register
+
+
+    script(src='/public/javascript/login.js')
+    .container
+        .row
+          .col-md-12
+            //- .pr-wrap
+            //-   .pass-reset
+            //-     label
+            //-         | Enter the email you signed up with
+            //-     input(type='email', placeholder='Email')
+            //-     input.pass-reset-submit.btn.btn-success.btn-sm(type='submit', value='Submit')
+            .wrap
+               p.form-title
+                 | Registration
+               form(action='/auth/sign-up', method ="POST").login
+                input(type='text', name="username" placeholder='Username')
+                input(type='password', name="password" placeholder='Password')
+                input.btn.btn-success.btn-sm(type='submit', value='Done')
