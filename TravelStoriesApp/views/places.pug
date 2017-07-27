@@ -6,4 +6,5 @@ block content
         each place in context
             div
                 h2
-                    =place.name
+                   a(href='place/' + place.name) 
+                        =place.name

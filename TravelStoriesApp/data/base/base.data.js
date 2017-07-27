@@ -49,6 +49,12 @@ class BaseMongoDbData {
         });
     }
 
+    getById(){
+        return new Promise((resolve, reject) => {
+            
+        })
+    }
+
     findOrCreateBy(props) {
         return this.filterBy(props)
             .then(([model]) => {
