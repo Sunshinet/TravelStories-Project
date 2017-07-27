@@ -14,11 +14,6 @@ class BaseMongoDbData {
             .toArray();
     }
 
-    getOne(props) {
-        return this.collection.findOne(props)
-            .toArray();
-    }
-
     getAll() {
         return this.collection.find()
             .toArray()
@@ -44,9 +39,19 @@ class BaseMongoDbData {
     }
 
     findById(id) {
-        return this.collection.findOne({
+        return this.collection.find({
             _id: new ObjectId(id),
-        });
+        })
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
+
+                return models;
+            });
     }
 
     findOrCreateBy(props) {

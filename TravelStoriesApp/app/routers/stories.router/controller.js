@@ -10,9 +10,12 @@ const init = (data) => {
         },
 
         getOne(req, res) {
-            return data.stories.findById(+req.params.id)
-                .then(() => {
-                    return res.render('stories/single-story');
+            return data.stories.findById(req.params.id)
+                .then((story) => {
+                    console.log(story);
+                    return res.render('stories/single-story', {
+                        context: story[0],
+                    });
                 });
         },
 

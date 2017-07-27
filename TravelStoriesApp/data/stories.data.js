@@ -1,11 +1,27 @@
 const BaseMongoDbData = require('./base/base.data');
 const Storie = require('../models/storie.model');
+const { ObjectId } = require('mongodb');
 
 class StoriesData extends BaseMongoDbData {
     constructor(db) {
         super(db, Storie, Storie);
     }
 
+    findById(id) {
+        return this.collection.find({
+            _id: new ObjectId(id),
+        })
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
+
+                return models;
+            });
+    }
 
     getByTitle(title) {
         return this
