@@ -18,3 +18,8 @@ mainPage{
 .title{
   padding-right: 5%;
 };
+
+.singleStory{
+  width: 25%;
+  background-color: purple;
+}

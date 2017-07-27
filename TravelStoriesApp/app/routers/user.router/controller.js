@@ -3,6 +3,7 @@ const init = (data) => {
         getUser(req, res) {
             return data.users.findById(+req.params.id)
                 .then(() => {
+                    //console.log(req.params.id);
                     return res.render('user', {
                     });
                 });

@@ -10,7 +10,10 @@ class StoriesData extends BaseMongoDbData {
      getByTitle(title) {
          return this
             .findOne({ titleStory: new RegExp(title, 'i') })
-            .then(([tName]) => console.log(tName.titleStory + 'this is it'));
+            .toArrey()
+            .then(([tName]) =>{
+                return tName;
+            });
     }
 
        create(model) {

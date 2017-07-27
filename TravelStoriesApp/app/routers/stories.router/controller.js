@@ -14,9 +14,15 @@ const init = (data) => {
                     return res.render('stories/form');
                 });
         },
-
-        create(req, res) {  // create story and place(create or not) ---------------------------------
-            const story = req.body; //взиаме бодито на формата
+        loadSinglePage(req, res) {
+             return data.stories.filterBy()
+            .then(() => {
+               // console.log(req.params.id);
+                return res.render('stories/single-story');
+            });
+        },
+        create(req, res) {// create story and place(create or not) -----
+            const story = req.body;// взиаме бодито на формата
 
             // validate item
             const place = {
@@ -76,9 +82,6 @@ const init = (data) => {
                 });
         },  //create story -----------------------------------------
 
-        updateStory(req, res){
-
-        }
     };
 
 

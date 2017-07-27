@@ -14,8 +14,8 @@ const attachTo = (app, data) => {
             }
        return controller.getForm(req, res);
     });
-    app.get('/stories/single-story', (req, res) => { // get single story
-      return controller.getStoryId(req, res);
+    app.get('/stories/:id', (req, res) => { // get single story
+      return controller.loadSinglePage(req, res);
         // return res.render('stories/single-story');
     });
 
