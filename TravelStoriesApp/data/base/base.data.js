@@ -11,12 +11,7 @@ class BaseMongoDbData {
 
     filterBy(props) { // props 
         return this.collection.find(props)
-        .toArray();
-    }
-
-     findOne(props) {
-        return this.collection.findOne(props)
-        .toArray();
+            .toArray();
     }
 
     getAll() {
@@ -44,9 +39,19 @@ class BaseMongoDbData {
     }
 
     findById(id) {
-        return this.collection.findOne({
+        return this.collection.find({
             _id: new ObjectId(id),
-        });
+        })
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
+
+                return models;
+            });
     }
 
     getById(){
@@ -59,7 +64,7 @@ class BaseMongoDbData {
         return this.filterBy(props)
             .then(([model]) => {
                 if (!model) {
-                     model = props;
+                    model = props;
                     return this.collection.insert(model)
                         .then(() => {
                             return model;
@@ -77,8 +82,8 @@ class BaseMongoDbData {
     }
 
     _isModelValid(model) {
-        if (typeof this.validator ==='undefined' ||
-            typeof this.validator.isValid !== 'function' ) { // if we don`t want validator
+        if (typeof this.validator === 'undefined' ||
+            typeof this.validator.isValid !== 'function') { // if we don`t want validator
             return true;
         }
 

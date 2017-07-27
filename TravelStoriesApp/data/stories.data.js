@@ -1,5 +1,5 @@
 const BaseMongoDbData = require('./base/base.data');
-const Storie = require('../models/stories');
+const Storie = require('../models/storie.model');
 const { ObjectId } = require('mongodb');
 
 class StoriesData extends BaseMongoDbData {
@@ -7,17 +7,32 @@ class StoriesData extends BaseMongoDbData {
         super(db, Storie, Storie);
     }
 
+    findById(id) {
+        return this.collection.find({
+            _id: new ObjectId(id),
+        })
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
 
-     getByTitle(title) {
-         return this
+                return models;
+            });
+    }
+
+    getByTitle(title) {
+        return this
             .findOne({ titleStory: new RegExp(title, 'i') })
             .toArrey()
-            .then(([tName]) =>{
+            .then(([tName]) => {
                 return tName;
             });
     }
 
-       create(model) {
+    create(model) {
         // if (!this._isModelValid(model)) {
         //     return Promise.reject('Validation failed!');
         // }
@@ -27,15 +42,7 @@ class StoriesData extends BaseMongoDbData {
             });
     }
 
-    findById(id) {
-        return this.collection.findOne({
-            _id: new ObjectId(id),
-        });
-    }
-
-        _isModelValid(model) {
-        // custom validation 
-       
+    _isModelValid(model) {
         return super._isModelValid(model);
     }
 }

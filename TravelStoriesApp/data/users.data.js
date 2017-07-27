@@ -1,6 +1,5 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user.model');
-const { ObjectId } = require('mongodb');
 
 class UsersData extends BaseData {
     constructor(db) {
@@ -12,11 +11,7 @@ class UsersData extends BaseData {
             .filterBy({ username: new RegExp(username, 'i') })
             .then(([user]) => user);
     }
-  findById(id) {
-        return this.collection.findOne({
-            _id: new ObjectId(id),
-        });
-    }
+
     checkPassword(username, password) {
         return this.findByUsername(username)
             .then((user) => {
