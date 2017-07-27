@@ -1,5 +1,6 @@
 const BaseMongoDbData = require('./base/base.data');
 const Storie = require('../models/stories');
+const { ObjectId } = require('mongodb');
 
 class StoriesData extends BaseMongoDbData {
     constructor(db) {
@@ -24,6 +25,12 @@ class StoriesData extends BaseMongoDbData {
             .then(() => {
                 return model;
             });
+    }
+
+    findByIdd(id) {
+        return this.collection.findOne({
+            _id: new ObjectId(id),
+        });
     }
 
         _isModelValid(model) {

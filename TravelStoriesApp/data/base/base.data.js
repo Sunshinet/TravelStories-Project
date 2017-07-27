@@ -1,4 +1,4 @@
-const { ObjectID } = require('mongodb');
+const { ObjectId } = require('mongodb');
 
 class BaseMongoDbData {
     constructor(db, ModelClass, validator) {
@@ -14,10 +14,10 @@ class BaseMongoDbData {
         .toArray();
     }
 
-    //  findOne(props) {
-    //     return this.collection.findOne(props)
-    //     .toArray();
-    // }
+     findOne(props) {
+        return this.collection.findOne(props)
+        .toArray();
+    }
 
     getAll() {
         return this.collection.find()
@@ -45,7 +45,7 @@ class BaseMongoDbData {
 
     findById(id) {
         return this.collection.findOne({
-            _id: new ObjectID(id),
+            _id: new ObjectId(id),
         });
     }
 

@@ -15,10 +15,10 @@ const init = (data) => {
                 });
         },
         loadSinglePage(req, res) {
-             return data.stories.filterBy()
+             return data.stories.findByIdd(+req.params.id)
             .then(() => {
-               // console.log(req.params.id);
-                return res.render('stories/single-story');
+                console.log(req.params.id);
+                //return res.render('stories/single-story');
             });
         },
         create(req, res) {// create story and place(create or not) -----
