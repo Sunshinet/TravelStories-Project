@@ -2,5 +2,15 @@ extends main
 
 block content
     div.userContainer
-      h1
-         =user.username
+      div
+        each story in user.stories
+          div.singleStory
+            h1
+              | Story Title: 
+              =story.titleStory
+            h1
+            | Story Places: 
+            =story.place.name
+            h1
+            | Story Body: 
+            =story.body

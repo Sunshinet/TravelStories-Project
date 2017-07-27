@@ -15,11 +15,10 @@ const init = (data) => {
                 });
         },
         loadSinglePage(req, res) {
-             return data.stories.findByIdd(+req.params.id)
-            .then(() => {
-                console.log(req.params.id);
-                //return res.render('stories/single-story');
-            });
+            return data.stories.findById(+req.params.id)
+                .then(() => {
+                    return res.render('stories/single-story');
+                });
         },
         create(req, res) {// create story and place(create or not) -----
             const story = req.body;// взиаме бодито на формата
@@ -73,7 +72,6 @@ const init = (data) => {
                     ]);
                 })
                 .then(() => {
-                    // connect-flash
                     return res.redirect('/stories');
                 })
                 .catch((err) => {

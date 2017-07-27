@@ -27,7 +27,7 @@ class StoriesData extends BaseMongoDbData {
             });
     }
 
-    findByIdd(id) {
+    findById(id) {
         return this.collection.findOne({
             _id: new ObjectId(id),
         });

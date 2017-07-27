@@ -4,7 +4,7 @@ const init = (data) => {
             return data.places.getAll()
                 .then((places) => {
                     return res.render('places', {
-                        // context: places,
+                        context: places,
                     });
                 });
         },

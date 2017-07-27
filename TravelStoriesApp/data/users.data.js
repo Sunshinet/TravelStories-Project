@@ -12,7 +12,7 @@ class UsersData extends BaseData {
             .filterBy({ username: new RegExp(username, 'i') })
             .then(([user]) => user);
     }
-  findByIdd(id) {
+  findById(id) {
         return this.collection.findOne({
             _id: new ObjectId(id),
         });

@@ -6,27 +6,26 @@ const attachTo = (app, data) => {
     });
 
     app.get('/stories/form', (req, res) => {
-          if (!req.user) {
-                return Promise.resolve()
-                    .then(() => {
-                        res.redirect('/auth/sign-in');
-                    });
-            }
-       return controller.getForm(req, res);
+        if (!req.user) {
+            return Promise.resolve()
+                .then(() => {
+                    res.redirect('/auth/sign-in');
+                });
+        }
+        return controller.getForm(req, res);
     });
     app.get('/stories/:id', (req, res) => { // get single story
-      return controller.loadSinglePage(req, res);
-        // return res.render('stories/single-story');
+        return controller.loadSinglePage(req, res);
     });
 
 
     app.post('/stories', (req, res) => {
-          if (!req.user) {
-                return Promise.resolve()
-                    .then(() => {
-                        res.redirect('/auth/sign-in');
-                    });
-            }
+        if (!req.user) {
+            return Promise.resolve()
+                .then(() => {
+                    res.redirect('/auth/sign-in');
+                });
+        }
         return controller.create(req, res);
     });
 };

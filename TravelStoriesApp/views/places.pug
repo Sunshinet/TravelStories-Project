@@ -1,3 +1,9 @@
 extends main
 block content
-    | TODO: Show all places extracted from all stories
+    div
+        h1
+            | All Places
+        each place in context
+            div
+                h2
+                    =place.name
