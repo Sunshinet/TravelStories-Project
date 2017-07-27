@@ -8,18 +8,21 @@ const init = (data) => {
                     });
                 });
         },
+
+        getOne(req, res) {
+            return data.stories.findById(+req.params.id)
+                .then(() => {
+                    return res.render('stories/single-story');
+                });
+        },
+
         getForm(req, res) {
             return Promise.resolve()
                 .then(() => {
                     return res.render('stories/form');
                 });
         },
-        loadSinglePage(req, res) {
-            return data.stories.findById(+req.params.id)
-                .then(() => {
-                    return res.render('stories/single-story');
-                });
-        },
+
         create(req, res) {// create story and place(create or not) -----
             const story = req.body;// взиаме бодито на формата
 

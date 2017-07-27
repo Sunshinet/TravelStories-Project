@@ -11,12 +11,12 @@ class BaseMongoDbData {
 
     filterBy(props) { // props 
         return this.collection.find(props)
-        .toArray();
+            .toArray();
     }
 
-     findOne(props) {
+    getOne(props) {
         return this.collection.findOne(props)
-        .toArray();
+            .toArray();
     }
 
     getAll() {
@@ -53,7 +53,7 @@ class BaseMongoDbData {
         return this.filterBy(props)
             .then(([model]) => {
                 if (!model) {
-                     model = props;
+                    model = props;
                     return this.collection.insert(model)
                         .then(() => {
                             return model;
@@ -71,8 +71,8 @@ class BaseMongoDbData {
     }
 
     _isModelValid(model) {
-        if (typeof this.validator ==='undefined' ||
-            typeof this.validator.isValid !== 'function' ) { // if we don`t want validator
+        if (typeof this.validator === 'undefined' ||
+            typeof this.validator.isValid !== 'function') { // if we don`t want validator
             return true;
         }
 

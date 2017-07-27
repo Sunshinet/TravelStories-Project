@@ -3,11 +3,11 @@ block content
     each story in context
         div.singleStory
           h1
-            a(href='/stories/id=' + story._id)
+            a(href='/stories/' + story._id)
               =story.titleStory
           h1 
             =story.place.name
-          div
-            h2
-              =story.user.username
+        div
+          h2
+            =story.user.username
 
