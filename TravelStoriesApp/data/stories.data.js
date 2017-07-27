@@ -1,5 +1,5 @@
 const BaseMongoDbData = require('./base/base.data');
-const Storie = require('../models/stories');
+const Storie = require('../models/storie.model');
 
 class StoriesData extends BaseMongoDbData {
     constructor(db) {
