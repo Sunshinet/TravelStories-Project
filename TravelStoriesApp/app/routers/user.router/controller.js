@@ -7,6 +7,16 @@ const init = (data) => {
                     });
                 });
         },
+        getAll(req, res) {
+            return data.users.getAll()
+            .then((users)=>{
+                return res.send(users);
+                //console.log(users);
+                // return res.render('all.users', {
+                //     context: users,
+                // });
+            });
+       },
     };
 
     return controller;
