@@ -8,7 +8,6 @@
 //     });
 // });
 
-$('.hidden').css('visibility', 'hidden');
-const el = $('.hidden');
-toastr.error();
-
+// $('.hidden').css('visibility', 'hidden');
+// const el = $('.hidden');
+// toastr.error('test');

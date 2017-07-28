@@ -93,7 +93,7 @@ const init = (data) => {
                 .then((dbStory) => {
                     dbStory[0].visible = false;
                     return Promise.resolve(
-                        data.stories.updateById(dbStory[0]),
+                        data.stories.updateById(dbStory[0])
                     );
                 })
                 .then(() => {

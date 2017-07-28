@@ -20,8 +20,7 @@ class StoriesController {
         this.data.users.findByUsername(bodyUser.username)
             .then((dbUser) => {
                 if (dbUser) {
-                    // throw new Error('User already exists');
-                    req.flash('error', 'Flash is back!');
+                    req.flash('error', 'User already exists');
                 }
 
                 return this.data.users.create(bodyUser);
@@ -30,7 +29,9 @@ class StoriesController {
                 req.flash('error', err);
             })
             .then(() => {
-                return res.render('auth/sign-up', { messages: req.flash('error') });
+                return res.render('auth/sign-up', {
+                    messages: req.flash('error'),
+                });
             });
     }
 }
