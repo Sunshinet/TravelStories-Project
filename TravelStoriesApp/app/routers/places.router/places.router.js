@@ -5,9 +5,9 @@ const attachTo = (app, data) => {
         return controller.getAll(req, res);
     });
 
-    // app.get('/places/'+ req, (req, res) => {
-    //     return controller.getByTitle(req, res);
-    // });
+    app.get('/places/:id', (req, res) => {
+        return controller.getByTitle(req, res);
+    });
 };
 
 module.exports = { attachTo };

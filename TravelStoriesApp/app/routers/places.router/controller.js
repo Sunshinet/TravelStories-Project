@@ -11,7 +11,7 @@ const init = (data) => {
         },
         getByTitle(req, res) {
             const name = req.params.name;
-            return data.places.getByTitle(name)
+            return data.places.getByPlace(name)
                 .then((result) => {
                     console.log(result);
                 });

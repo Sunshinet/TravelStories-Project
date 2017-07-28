@@ -9,11 +9,11 @@ class PlacesData extends BaseMongoDbData {
 
      getByPlace(prop) {
          return this.collection
-            .find( { name: prop })
-            .toArrey();
-            // .then(([tName]) =>{
-            //     return tName;
-            // });
+            .findOne( { name: prop })
+            // .toArrey()
+            .then((res) => {
+                console.log(res)
+            });
     }
 
         _isModelValid(model) {
