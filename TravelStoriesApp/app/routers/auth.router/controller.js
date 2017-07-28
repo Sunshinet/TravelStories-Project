@@ -4,10 +4,10 @@ class StoriesController {
     }
 
     getSignUpForm(req, res) {
-        return res.render('auth/sign-up');
+        return res.render('auth/sign-up', { title: 'Sign Up' });
     }
     getSignInForm(req, res) {
-        return res.render('auth/sign-in');
+        return res.render('auth/sign-in', { title: 'Sign In' });
     }
     signOut(req, res) {
         req.logout();

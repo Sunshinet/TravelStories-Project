@@ -1,8 +1,7 @@
 const init = (data) => {
     const controller = {
         getAll(req, res) {
-            return res.render('team', {
-            });
+            return res.render('team', { title: 'Our Team' });
         },
     };
 

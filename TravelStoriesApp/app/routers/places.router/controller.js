@@ -4,17 +4,18 @@ const init = (data) => {
             return data.places.getAll()
                 .then((places) => {
                     return res.render('places', {
+                        title: 'All Places',
                         context: places,
                     });
                 });
         },
-            getByTitle(req, res) {
-                const name = req.params.name;
-                return data.places.getByTitle(name)
+        getByTitle(req, res) {
+            const name = req.params.name;
+            return data.places.getByTitle(name)
                 .then((result) => {
                     console.log(result);
                 });
-            },
+        },
     };
 
     return controller;

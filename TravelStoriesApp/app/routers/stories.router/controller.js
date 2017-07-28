@@ -4,6 +4,7 @@ const init = (data) => {
             return data.stories.getAll()
                 .then((stories) => {
                     return res.render('stories/stories-all', {
+                        title: 'All Stories',
                         context: stories,
                     });
                 });
@@ -13,6 +14,7 @@ const init = (data) => {
             return data.stories.findById(req.params.id)
                 .then((story) => {
                     return res.render('stories/single-story', {
+                        title: 'One Story',
                         context: story[0],
                     });
                 });
