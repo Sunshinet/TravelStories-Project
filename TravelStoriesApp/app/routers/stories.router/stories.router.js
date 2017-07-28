@@ -15,7 +15,12 @@ const attachTo = (app, data) => {
         return controller.getForm(req, res);
     });
 
-    app.get('/stories/:id', (req, res) => { // get single story
+    app.put('/stories/:id', (req, res) => {
+        console.log('EXOOOO');
+        return controller.delete(req, res);
+    });
+
+    app.get('/stories/:id', (req, res) => {
         return controller.getOne(req, res);
     });
 

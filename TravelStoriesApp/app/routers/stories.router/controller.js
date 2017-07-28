@@ -12,7 +12,6 @@ const init = (data) => {
         getOne(req, res) {
             return data.stories.findById(req.params.id)
                 .then((story) => {
-                    console.log(story);
                     return res.render('stories/single-story', {
                         context: story[0],
                     });
@@ -26,19 +25,18 @@ const init = (data) => {
                 });
         },
 
-        create(req, res) {// create story and place(create or not) -----
-            const story = req.body;// взиаме бодито на формата
+        create(req, res) {
+            const story = req.body;
+            story.visible = true;
 
             // validate item
             const place = {
-                name: story.place,    //взиамме категория което е в боди
+                name: story.place,
             };
-            //  console.log(place);
 
+            const user = req.user;
 
-            const user = req.user;     //взимаме юзъра, който го създава
-
-            story.user = {              // създаваме в тудуто колекция юзър , която съзържа данните на юзъра
+            story.user = {
                 id: user._id,
                 username: user.username,
             };
@@ -46,7 +44,7 @@ const init = (data) => {
             return Promise
                 .all([
                     data.stories.create(story),
-                    data.places.findOrCreateBy(place), //намери или създай, защото може вече да има такава категория //tuka ima bug?!?!?!?
+                    data.places.findOrCreateBy(place),
                 ])
                 .then(([dbStory, dbPlaces]) => {
                     dbPlaces.name = story.place;
@@ -69,7 +67,6 @@ const init = (data) => {
                         body: dbStory.body,
                         place: dbStory.place,
                     });
-                    console.log(user);
 
                     return Promise.all([
                         data.stories.updateById(dbStory),
@@ -84,8 +81,16 @@ const init = (data) => {
                     req.flash('error', err);
                     return res.redirect('/stories/form');
                 });
-        },  //create story -----------------------------------------
+        },
 
+        delete(req, res) {
+            return data.stories.findById(req.params.id)
+                .then((story) => {
+                    console.log(story);
+                    story.visible = false;
+                    return res.redirect('/stories');
+                });
+        },
     };
 
 

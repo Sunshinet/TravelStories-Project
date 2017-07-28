@@ -54,10 +54,9 @@ class BaseMongoDbData {
             });
     }
 
-    getById(){
+    getById() {
         return new Promise((resolve, reject) => {
-            
-        })
+        });
     }
 
     findOrCreateBy(props) {

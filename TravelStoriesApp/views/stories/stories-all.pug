@@ -1,6 +1,7 @@
 extends ../main
 block content
     each story in context
+      if story.visible
         div.singleStory
           h1
             a(href='/stories/' + story._id)

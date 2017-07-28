@@ -6,3 +6,7 @@ block content
     =context.place.name
   h1
     =context.user.username
+  div.form
+    form(action="/stories/" method="PUT")
+      button.btn.btn-success
+        | Delete
