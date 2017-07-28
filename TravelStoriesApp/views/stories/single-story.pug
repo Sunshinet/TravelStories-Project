@@ -1,12 +1,12 @@
 extends ../main
 block content
+  script(src='/public/javascript/deleteStory.js')
   h1
     =context.titleStory
   h1
     =context.place.name
   h1
     =context.user.username
-  div.form
-    form(action="/stories/" method="PUT")
-      button.btn.btn-success
-        | Delete
+  div
+    button#del-btn.btn.btn-success
+      | Delete

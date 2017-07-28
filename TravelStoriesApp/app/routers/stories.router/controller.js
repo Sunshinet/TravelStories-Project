@@ -55,6 +55,7 @@ const init = (data) => {
                         _id: dbStory._id,
                         titleStory: dbStory.titleStory,
                         body: dbStory.body,
+                        visible: dbStory.visible,
                     });
 
                     dbStory.place = {
@@ -68,6 +69,7 @@ const init = (data) => {
                         titleStory: dbStory.titleStory,
                         body: dbStory.body,
                         place: dbStory.place,
+                        visible: dbStory.visible,
                     });
 
                     return Promise.all([
@@ -86,18 +88,25 @@ const init = (data) => {
         },
 
         delete(req, res) {
-            return data.stories.findById(req.params.id)
-                .then((story) => {
-                    console.log(story);
-                    story.visible = false;
+            return Promise
+                .resolve(data.stories.findById(req.params.id))
+                .then((dbStory) => {
+                    dbStory[0].visible = false;
+                    return Promise.resolve(
+                        data.stories.updateById(dbStory[0]),
+                    );
+                })
+                .then(() => {
                     return res.redirect('/stories');
+                })
+                .catch((err) => {
+                    req.flash('error', err);
+                    return res.redirect('/stories/');
                 });
         },
     };
 
-
     return controller;
 };
-
 
 module.exports = { init };

@@ -15,8 +15,7 @@ const attachTo = (app, data) => {
         return controller.getForm(req, res);
     });
 
-    app.put('/stories/:id', (req, res) => {
-        console.log('EXOOOO');
+    app.post('/stories/:id', (req, res) => {
         return controller.delete(req, res);
     });
 

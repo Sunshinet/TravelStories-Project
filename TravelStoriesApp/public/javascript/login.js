@@ -1,3 +1,4 @@
+/* globals $ */
 $(document).ready( function() {
     $('.forgot-pass').click(function(event) {
       $('.pr-wrap').toggleClass('show-pass-reset');
@@ -6,4 +7,3 @@ $(document).ready( function() {
       $('.pr-wrap').removeClass('show-pass-reset');
     });
 });
-
