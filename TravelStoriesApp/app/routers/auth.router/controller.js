@@ -20,16 +20,17 @@ class StoriesController {
         this.data.users.findByUsername(bodyUser.username)
             .then((dbUser) => {
                 if (dbUser) {
-                    throw new Error('User already exists');
+                    // throw new Error('User already exists');
+                    req.flash('error', 'Flash is back!');
                 }
 
                 return this.data.users.create(bodyUser);
             })
-            .then((dbUser) => {
-                return res.redirect('/auth/sign-in');
-            })
             .catch((err) => {
                 req.flash('error', err);
+            })
+            .then(() => {
+                return res.render('auth/sign-up', { messages: req.flash('error') });
             });
     }
 }

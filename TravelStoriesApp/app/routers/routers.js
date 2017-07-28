@@ -8,6 +8,15 @@ const attachTo = (app, data) => {
         return res.render('main', { title: 'TravellStories' });
     });
 
+    // app.get('/flash', function(req, res) {
+    //     req.flash('info', 'Flash is back!');
+    //     res.redirect('/team');
+    // });
+
+    // app.get('/team', function(req, res) {
+    //     res.render('team', { messages: req.flash('info') });
+    // });
+
     fs.readdirSync(__dirname)
         .filter((file) => file.includes('.router'))
         .forEach((file) => {
