@@ -1,7 +1,9 @@
-body {
- padding: 0px;
- margin: 0px;
- height: 1000px; 
+body
+{
+    
+    background-size: cover;
+    padding: 0;
+    margin: 0;
 }
 
 mainPage{
