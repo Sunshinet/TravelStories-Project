@@ -19,6 +19,7 @@ textarea{
     margin-top: 3%;
     width: 80%;
     height: 80%;
+    color: black;
 }
 .btn.btn-info.btn-rounded{
     display: block;

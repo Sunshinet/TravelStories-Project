@@ -8,11 +8,11 @@ block content
     form.form-group(action="/stories" method="POST" id="useThis")
       label(for="title")
         | Story Title:
-      input.form-control(name="titleStory" id="title" required type="text" placeholder="Title story")
+      input.form-control(name="titleStory" id="title" required type="text" placeholder="put a title here :)")
       label(for="place")
-        | Story Title:
-      input.form-control(name="place" id= "place" required type="text" placeholder="Place")
+        | Place:
+      input.form-control(name="place" id= "place" required type="text" placeholder="where have you been?")
       
-      textarea.textBody(name="body" form="useThis")
+      textarea.textBody(name="body" form="useThis" placeholder="your thoughts....")
       button.btn.btn-info.btn-rounded
         | Save your story
