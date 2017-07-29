@@ -1,0 +1,10 @@
+extends ../main
+block content
+    h1
+        | All stories in 
+        =context.name
+        | :
+    div
+        each story in context.story
+            div
+                =story.titleStory
