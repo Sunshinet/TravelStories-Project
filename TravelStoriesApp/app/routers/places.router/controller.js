@@ -9,6 +9,16 @@ const init = (data) => {
                     });
                 });
         },
+            getAllapi(req, res) {
+            return data.places.getAll()
+                .then((places) => {
+                    return res.send(places);
+                    // return res.render('places', {
+                    //     title: 'All Places',
+                    //     context: places,
+                    // });
+                });
+        },
 
         getOne(req, res) {
             return data.places.findById(req.params.id)
@@ -18,6 +28,14 @@ const init = (data) => {
                         title: 'One Place',
                         context: place[0],
                     });
+                });
+        },
+
+        getByTitle(req, res) {
+            const name = req.params.name;
+            return data.places.getByPlace(name)
+                .then((result) => {
+                    console.log(result);
                 });
         },
     };

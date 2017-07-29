@@ -1,8 +1,8 @@
 extends ../main
 block content
-  script(src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=tqq5s6kwe7qtj2dn366ll67wl5kfqd4hpxzbamnrbt09fo86")
-  script
-            |tinymce.init({ selector:'textarea' });
+  //- script(src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=tqq5s6kwe7qtj2dn366ll67wl5kfqd4hpxzbamnrbt09fo86")
+  //- script
+  //-           |tinymce.init({ selector:'textarea' });
  
   div.form
     form(action="/stories" method="POST" id="useThis")
@@ -10,5 +10,4 @@ block content
       input.form-story(name="place" required type="text" placeholder="Enter text")
       button.btn.btn-success
         | Save
-    textarea(name="body" form="useThis")#tinymce
-  
+    textarea(name="body" form="useThis")

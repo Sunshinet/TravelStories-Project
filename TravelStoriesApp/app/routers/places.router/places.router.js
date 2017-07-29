@@ -8,6 +8,9 @@ const attachTo = (app, data) => {
     app.get('/places/:id', (req, res) => {
         return controller.getOne(req, res);
     });
+    app.get('/api/places', (req, res) => {
+        return controller.getAllapi(req, res);
+    });
 };
 
 module.exports = { attachTo };
