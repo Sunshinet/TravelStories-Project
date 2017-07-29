@@ -5,18 +5,17 @@ class PlacesData extends BaseMongoDbData {
     constructor(db) {
         super(db, Place, Place);
     }
-     
 
-     getByPlace(prop) {
-         return this.collection
-            .findOne( { name: prop })
+    getByPlace(prop) {
+        return this.collection
+            .findOne({ name: prop })
             // .toArrey()
             .then((res) => {
-                console.log(res)
+                console.log(res);
             });
     }
 
-        _isModelValid(model) {
+    _isModelValid(model) {
         return super._isModelValid(model);
     }
 }

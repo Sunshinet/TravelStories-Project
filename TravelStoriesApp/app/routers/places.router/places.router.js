@@ -6,7 +6,7 @@ const attachTo = (app, data) => {
     });
 
     app.get('/places/:id', (req, res) => {
-        return controller.getByTitle(req, res);
+        return controller.getOne(req, res);
     });
 };
 
