@@ -1,16 +1,17 @@
-body
-{
-    
-    background-size: cover;
-    padding: 0;
-    margin: 0;
+body {
+ padding: 0px;
+ margin: 0px;
+ height: 1000px; 
+  background-size: cover;
+    /* padding: 0;
+    margin: 0; */
 }
 
 mainPage{
  padding-left: 50%;
 }
 .quote {
-  color: white;
+  color: black;
   text-align: right;
   padding-right: 20%;
   font-size: 10%;
@@ -24,4 +25,7 @@ mainPage{
 .singleStory{
   width: 25%;
   background-color: purple;
+}
+.itLeavseYou {
+  padding-left: 5%;
 }

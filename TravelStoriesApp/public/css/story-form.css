@@ -1,8 +1,5 @@
-
-body
-{
-    
-    background-size: cover;
+body {
+  background-size: cover;
     padding: 0;
     margin: 0;
 }
@@ -20,6 +17,7 @@ form {
 .form-group{
     width: 70%;
     height: 100%;
+    margin-left: 15%;
 }
 .form-control{
     width: 48%;
@@ -36,4 +34,6 @@ textarea{
 }
 .btn.btn-info.btn-rounded{
     display: block;
+    margin-left: 45%;
+    margin-top: 2%;
 }
