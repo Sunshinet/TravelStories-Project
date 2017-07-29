@@ -1,2 +1,2 @@
 console.log('andrey');
-io.connect('http://localhost:80');
+const b = io.connect('http://localhost:80');

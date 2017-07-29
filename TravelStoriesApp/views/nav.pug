@@ -23,7 +23,7 @@ mixin nav()
     if user
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='/users/' + user._id)
+          a(href='/user/' + user._id)
             =user.username
         li
           form(action="/auth/sign-out" method="post")
