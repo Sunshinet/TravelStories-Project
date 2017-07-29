@@ -3,15 +3,16 @@ block content
   //- script(src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=tqq5s6kwe7qtj2dn366ll67wl5kfqd4hpxzbamnrbt09fo86")
   //- script
   //-           |tinymce.init({ selector:'textarea' });
-  script(src="../../public/css/story-form.css")
-  div.form
-    form(action="/stories" method="POST" id="useThis")
+  
+  div.container-form
+    form.form-group(action="/stories" method="POST" id="useThis")
       label(for="title")
         | Story Title:
-      input.form-story(name="titleStory" id="title" required type="text" placeholder="Title story")
+      input.form-control(name="titleStory" id="title" required type="text" placeholder="Title story")
       label(for="place")
         | Story Title:
-      input.form-story(name="place" id= "place" required type="text" placeholder="Place")
-      button.btn.btn-success
-        | Save
-    textarea.textBody(name="body" form="useThis")
+      input.form-control(name="place" id= "place" required type="text" placeholder="Place")
+      
+      textarea.textBody(name="body" form="useThis")
+      button.btn.btn-info.btn-rounded
+        | Save your story
