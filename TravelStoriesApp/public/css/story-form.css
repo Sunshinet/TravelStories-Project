@@ -1,7 +1,10 @@
 .container-form {
-        height: 50%;
-        color: white;
+    height: 50%;
+    color: white;
 }
+label{
+    margin-left: 21%;
+    }
 form {
     width: 100%;
     opacity:0.9 
@@ -13,6 +16,7 @@ form {
 .form-control{
     width: 48%;
     height: 10%;
+    margin-left: 21%;
 }
 
 textarea{
@@ -20,6 +24,7 @@ textarea{
     width: 80%;
     height: 80%;
     color: black;
+    margin-left: 10%;
 }
 .btn.btn-info.btn-rounded{
     display: block;

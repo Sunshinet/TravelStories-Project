@@ -1,0 +1,10 @@
+.singleStory{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    background: url('../pictures/background.jpg');
+    margin-left: 10%;
+    width: 34%;
+    height: 25%;
+    margin-bottom: 4%;
+}
