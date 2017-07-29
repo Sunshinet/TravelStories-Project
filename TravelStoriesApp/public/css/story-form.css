@@ -5,10 +5,11 @@ body {
 }
 .container-form {
     height: 50%;
-    color: white;
+    color:black;
 }
 label{
     margin-left: 21%;
+    padding-top: 1%;
     }
 form {
     width: 100%;
