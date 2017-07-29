@@ -1,13 +1,9 @@
 /* globals $ toastr */
-// $(document).ready( function() {
-//     $('.forgot-pass').click(function(event) {
-//       $('.pr-wrap').toggleClass('show-pass-reset');
-//     });
-//     $('.pass-reset-submit').click(function(event) {
-//       $('.pr-wrap').removeClass('show-pass-reset');
-//     });
-// });
 
-// $('.hidden').css('visibility', 'hidden');
-// const el = $('.hidden');
-// toastr.error('test');
+$(document).ready(function() {
+    $('#reg-btn').on('click', function() {
+        const el = $('.abc');
+        el.css('display', 'none');
+        toastr.error(el.text());
+    });
+});

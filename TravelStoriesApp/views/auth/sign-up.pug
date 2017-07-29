@@ -2,7 +2,7 @@ extends ../main
 
 block content
     script(src='/public/javascript/register.js')
-    h1
+    h1.abc
       =messages
     .container
         .row
@@ -19,4 +19,5 @@ block content
                form(action='/auth/sign-up', method ="POST").login
                 input(type='text' id='username' name="username" required placeholder='Username')
                 input(type='password' id='password' name="password" required placeholder='Password')
-                input.btn.btn-success.btn-sm(type='submit', value='Done')
+                button.btn.btn-success.btn-sm(id='reg-btn' value='Done')
+                  | Done
