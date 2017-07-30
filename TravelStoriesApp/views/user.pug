@@ -1,24 +1,50 @@
 extends main
 
 block content
-    h1
-      | SMALL TEST
-    div.userContainer
-      div
-        h1
-          =user.username
-        if user.stories
-          each story in user.stories
-            div.singleStory
-              h1
-                | Story Title: 
-                =story.titleStory
-              h1
-              | Story Places: 
-              =story.place.name
-              h1
-              | Story Body: 
-              =story.body
+
+    script(src='../public/javascript/grid')
+    link(rel='stylesheet', href='../public/css/grid.css')
+    
+    .container
+        .well
+            if user.hasAvatar == true
+                img.group.list-group-image(src='../public/avatars/' + user._id, alt='user avatar')
+            else
+                img.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='generic avatar')
+            .caption
+            h1.group.inner.list-group-item-heading
+                =user.username
+            h4.group.inner.list-group-item-text
+                =user.bio
+            h4.group.inner.list-group-item-text
+                span.glyphicon.glyphicon-map-marker
+                    | 
+                    =user.username
+                    |  has travelled to places such as 
+                    if user.stories
+                      each story in user.stories
+                        =story.place.name
+                        |, 
+                    | and many, many more!
+            .row
+                a.btn.btn-success(href='/user/' + user._id)
+                    | Visit Profile
+                if user.email != ""
+                    a.right-btn.btn.btn-info.btn-rounded(href='mailto:' + user.email)
+                        | Contact Me
+
+    if user.stories
+      each story in user.stories
+        div.singleStory
+          h1
+            | Story Title: 
+            =story.titleStory
+          h1
+          | Story Places: 
+          =story.place.name
+          h1
+          | Story Body: 
+          =story.body
 
     form.form-group(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
       input.form-control(name='avatar' id= 'place' required type='file')
