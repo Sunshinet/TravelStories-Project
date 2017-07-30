@@ -1,7 +1,20 @@
 extends main 
 block content 
-  each user in context
-    h1
-      a(href='#')
-         =user.username
-      
+    script(src='../public/javascript/grid')
+    link(rel='stylesheet', href='../public/css/grid.css')
+
+    .container
+        .well
+            h1
+                | Our Users
+        each user in context
+            .item.col-xs-4.col-lg-4
+            .well
+                img.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='')
+                .caption
+                h4.group.inner.list-group-item-heading
+                    =user.username
+                p.group.inner.list-group-item-text
+                    | User bio goes here
+                .row
+                    a.btn.btn-success(href='#') Visit Profile
