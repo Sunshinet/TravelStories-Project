@@ -17,4 +17,5 @@ block content
                 p.group.inner.list-group-item-text
                     | User bio goes here
                 .row
-                    a.btn.btn-success(href='#') Visit Profile
+                    a.btn.btn-success(href='/user/' + user._id)
+                        | Visit Profile
