@@ -1,9 +1,15 @@
 const init = (data) => {
     const controller = {
         getOne(req, res) {
-            return data.users.findById(+req.params.id)
-                .then(() => {
-                    return res.render('user', { title: 'My Profile' });
+            const userId = req.params.id;
+            return data.users.findById(userId)
+                .then((user) => {
+                    return res.render(
+                        'user',
+                        {
+                             title: 'My Profile',
+                             user: user,
+                        });
                 });
         },
     };
