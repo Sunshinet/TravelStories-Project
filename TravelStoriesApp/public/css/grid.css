@@ -75,6 +75,12 @@
 {
     color: grey;
 }
+
+.well p 
+{
+    color: grey;
+}
+
 .well img
 {
     width: 250px;
