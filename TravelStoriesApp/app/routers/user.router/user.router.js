@@ -1,3 +1,5 @@
+/* globals __dirname */
+
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
 
@@ -7,6 +9,40 @@ const attachTo = (app, data) => {
 
     app.get('/user/:id', (req, res) => {
         return controller.getOne(req, res);
+    });
+
+    const multer = require('multer');
+
+    const storage = multer.diskStorage({
+        destination: function(req, file, callback) {
+            callback(
+                null,
+                './public/avatars'
+            );
+        },
+        filename: function(req, file, callback) {
+            callback(
+                null,
+                file.fieldname + '-' + Date.now()
+            );
+        },
+    });
+
+    const upload = multer({ storage: storage })
+        .single('avatar');
+
+    app.get('/', function(req, res) {
+        res.sendFile(__dirname + '/index.html');
+    });
+
+    app.post('/user/avatar', function(req, res) {
+        upload(req, res, function(err) {
+            console.log(err);
+            if (err) {
+                return res.end('' + err);
+            }
+            return res.end('File is uploaded');
+        });
     });
 };
 

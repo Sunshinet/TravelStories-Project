@@ -17,3 +17,8 @@ block content
               h1
               | Story Body: 
               =story.body
+
+    form.form-group(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
+      input.form-control(name='avatar' id= 'place' required type='file')
+      button.btn.btn-info.btn-rounded(type='submit' name="submit")
+        | Upload Avatar
