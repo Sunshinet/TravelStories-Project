@@ -14,38 +14,6 @@ const attachTo = (app, data) => {
         }
         return controller.getForm(req, res);
     });
-      app.get('/stories/form/edit', (req, res) => {
-        // if (!req.user) {
-        //     return Promise.resolve()
-        //         .then(() => {
-        //             res.redirect('/auth/sign-in');
-        //         });
-        // }
-       
-          return controller.getEditForm(req, res);
-    });
-      app.get('/stories/form/edit', (req, res) => {
-        // if (!req.user) {
-        //     return Promise.resolve()
-        //         .then(() => {
-        //             res.redirect('/auth/sign-in');
-        //         });
-        // }
-       
-          return controller.getEditForm(req, res);
-    });
-         app.post('/stories', (req, res) => {
-        return controller.edit(req, res);
-    });
-
-    app.post('/stories/:id', (req, res) => {
-        return controller.delete(req, res);
-    });
-
-    app.get('/stories/:id', (req, res) => {
-        return controller.getOne(req, res);
-    });
-
 
     app.post('/stories', (req, res) => {
         if (!req.user) {
@@ -55,6 +23,22 @@ const attachTo = (app, data) => {
                 });
         }
         return controller.create(req, res);
+    });
+
+    app.get('/stories/edit-story/:id', (req, res) => {
+        return controller.getEditForm(req, res);
+    });
+
+    app.post('/stories-update', (req, res) => {
+        return controller.edit(req, res);
+    });
+
+    app.post('/stories/:id', (req, res) => {
+        return controller.delete(req, res);
+    });
+
+    app.get('/stories/:id', (req, res) => {
+        return controller.getOne(req, res);
     });
 };
 

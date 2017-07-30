@@ -23,13 +23,13 @@ const init = (data) => {
         getForm(req, res) {
             return Promise.resolve()
                 .then(() => {
-                    return res.render('stories/form');
+                    return res.render('stories/create-form');
                 });
         },
         getEditForm(req, res) {
             return Promise.resolve()
                 .then(() => {
-                    return res.render('stories/edit');
+                    return res.render('stories/edit-form');
                 });
         },
         create(req, res) {
@@ -94,28 +94,26 @@ const init = (data) => {
 
         edit(req, res) {
             const story = req.body;
-            console.log(story);
-            console.log(req.params.id);
             const place = {
                 name: story.place,
             };
 
             const user = req.user;
 
-            story.user = {
-                id: user._id,
-                username: user.username,
-            };
+            // story.user = {
+            //     id: user._id,
+            //     username: user.username,
+            // };
 
             return Promise
                 .all([
                     data.stories.findById(req.params.id),
-        
                     data.places.findOrCreateBy(place),
                 ])
                 .then(([dbStory, dbPlaces]) => {
-                    dbPlaces[0].name = story.place;
-                    dbPlaces[0].stories = dbPlaces[0].stories || [];
+                    console.log(req.params.id);
+                    // dbPlaces[0].name = story.place;
+                    // dbPlaces[0].stories = dbPlaces[0].stories || [];
                     // dbPlaces.stories.push({
                     //     _id: dbStory._id,
                     //     titleStory: dbStory.titleStory,
@@ -128,7 +126,7 @@ const init = (data) => {
                     //     name: dbPlaces.name,
                     // };
 
-                    user.stories = user.stories || [];
+                    // user.stories = user.stories || [];
                     // user.stories.push({
                     //     _id: dbStory._id,
                     //     titleStory: dbStory.titleStory,
@@ -139,7 +137,7 @@ const init = (data) => {
 
                     return Promise.all([
                         data.stories.updateById(dbStory[0]),
-                        data.places.updateById(dbPlaces[0]),
+                        data.places.updateById(dbPlaces),
                         data.users.updateById(user),
                     ]);
                 })
