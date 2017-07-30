@@ -1,4 +1,4 @@
-const port = 80;
+const port = 3001;
 const connectionString = 'mongodb://localhost/stories';
 const connectionStringAWS = 'mongodb://13.59.102.61/stories';
 const sessionSecret = 'secretSession';
