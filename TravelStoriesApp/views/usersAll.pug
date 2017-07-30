@@ -10,7 +10,10 @@ block content
         each user in context
             .item.col-xs-4.col-lg-4
             .well
-                img.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='')
+                if user.hasAvatar == true
+                    img.group.list-group-image(src='../public/avatars/' + user._id, alt='avatar')
+                else
+                    img.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='generic avatar')
                 .caption
                 h4.group.inner.list-group-item-heading
                     =user.username

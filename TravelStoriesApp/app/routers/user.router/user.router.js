@@ -1,5 +1,6 @@
 /* globals __dirname */
 
+
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
 
@@ -15,6 +16,11 @@ const attachTo = (app, data) => {
 
     const storage = multer.diskStorage({
         destination: function(req, file, callback) {
+            data.users.findById(req.session.passport.user)
+            .then((user) => {
+                user.hasAvatar = true;
+                data.users.updateById(user);
+            });
             callback(
                 null,
                 './public/avatars'
@@ -23,7 +29,7 @@ const attachTo = (app, data) => {
         filename: function(req, file, callback) {
             callback(
                 null,
-                file.fieldname + '-' + Date.now()
+                req.session.passport.user
             );
         },
     });
@@ -37,7 +43,6 @@ const attachTo = (app, data) => {
 
     app.post('/user/avatar', function(req, res) {
         upload(req, res, function(err) {
-            console.log(err);
             if (err) {
                 return res.end('' + err);
             }
