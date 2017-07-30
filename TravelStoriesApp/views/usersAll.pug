@@ -17,7 +17,8 @@ block content
                 p.group.inner.list-group-item-text
                     =user.bio
                 .row
-                    a.left-btn.btn.btn-success(href='/user/' + user._id)
+                    a.btn.btn-success(href='/user/' + user._id)
                         | Visit Profile
-                    a.btn.btn-info.btn-rounded(href='mailto:' + user.email)
-                        | Contact Me
+                    if user.email != ""
+                        a.right-btn.btn.btn-info.btn-rounded(href='mailto:' + user.email)
+                            | Contact Me

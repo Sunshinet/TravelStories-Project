@@ -73,12 +73,12 @@
 
 .well h1
 {
-    color: grey;
+    color: darkslategrey;
 }
 
 .well p 
 {
-    color: grey;
+    color: darkslategrey;
 }
 
 .well img
@@ -90,7 +90,7 @@
     text-align: center;
 }
 
-.left-btn
+.right-btn
 {
-    margin-right: 20px;
+    margin-left: 20px;
 }
