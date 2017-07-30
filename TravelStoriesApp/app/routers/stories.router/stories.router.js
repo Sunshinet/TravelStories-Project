@@ -14,6 +14,29 @@ const attachTo = (app, data) => {
         }
         return controller.getForm(req, res);
     });
+      app.get('/stories/form/edit', (req, res) => {
+        // if (!req.user) {
+        //     return Promise.resolve()
+        //         .then(() => {
+        //             res.redirect('/auth/sign-in');
+        //         });
+        // }
+       
+          return controller.getEditForm(req, res);
+    });
+      app.get('/stories/form/edit', (req, res) => {
+        // if (!req.user) {
+        //     return Promise.resolve()
+        //         .then(() => {
+        //             res.redirect('/auth/sign-in');
+        //         });
+        // }
+       
+          return controller.getEditForm(req, res);
+    });
+         app.post('/stories', (req, res) => {
+        return controller.edit(req, res);
+    });
 
     app.post('/stories/:id', (req, res) => {
         return controller.delete(req, res);

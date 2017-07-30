@@ -26,7 +26,12 @@ const init = (data) => {
                     return res.render('stories/form');
                 });
         },
-
+        getEditForm(req, res) {
+            return Promise.resolve()
+                .then(() => {
+                    return res.render('stories/edit');
+                });
+        },
         create(req, res) {
             const story = req.body;
             story.visible = true;
@@ -85,6 +90,66 @@ const init = (data) => {
                     req.flash('error', err);
                     return res.redirect('/stories/form');
                 });
+        },
+
+        edit(req, res) {
+            const story = req.body;
+            console.log(story);
+            console.log(req.params.id);
+            const place = {
+                name: story.place,
+            };
+
+            const user = req.user;
+
+            story.user = {
+                id: user._id,
+                username: user.username,
+            };
+
+            return Promise
+                .all([
+                    data.stories.findById(req.params.id),
+        
+                    data.places.findOrCreateBy(place),
+                ])
+                .then(([dbStory, dbPlaces]) => {
+                    dbPlaces[0].name = story.place;
+                    dbPlaces[0].stories = dbPlaces[0].stories || [];
+                    // dbPlaces.stories.push({
+                    //     _id: dbStory._id,
+                    //     titleStory: dbStory.titleStory,
+                    //     body: dbStory.body,
+                    //     visible: dbStory.visible,
+                    // });
+
+                    // dbStory.place = {
+                    //     _id: dbPlaces._id,
+                    //     name: dbPlaces.name,
+                    // };
+
+                    user.stories = user.stories || [];
+                    // user.stories.push({
+                    //     _id: dbStory._id,
+                    //     titleStory: dbStory.titleStory,
+                    //     body: dbStory.body,
+                    //     place: dbStory.place,
+                    //     visible: dbStory.visible,
+                    // });
+
+                    return Promise.all([
+                        data.stories.updateById(dbStory[0]),
+                        data.places.updateById(dbPlaces[0]),
+                        data.users.updateById(user),
+                    ]);
+                })
+                .then(() => {
+                    return res.redirect('/stories');
+                });
+                // .catch((err) => {
+                //     req.flash('error', err);
+                //     return res.redirect('/stories/form');
+                // });
         },
 
         delete(req, res) {
