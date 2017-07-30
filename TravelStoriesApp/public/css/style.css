@@ -2,7 +2,7 @@ body {
  padding: 0px;
  margin: 0px;
  height: 1000px; 
-  background-size: cover;
+  background-attachment: fixed;
     /* padding: 0;
     margin: 0; */
 }
