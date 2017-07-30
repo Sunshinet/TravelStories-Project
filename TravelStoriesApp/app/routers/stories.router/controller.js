@@ -50,8 +50,8 @@ const init = (data) => {
                 ])
                 .then(([dbStory, dbPlaces]) => {
                     dbPlaces.name = story.place;
-                    dbPlaces.story = dbPlaces.story || [];
-                    dbPlaces.story.push({
+                    dbPlaces.stories = dbPlaces.stories || [];
+                    dbPlaces.stories.push({
                         _id: dbStory._id,
                         titleStory: dbStory.titleStory,
                         body: dbStory.body,
