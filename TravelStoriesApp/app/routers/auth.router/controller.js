@@ -23,6 +23,10 @@ class StoriesController {
                     req.flash('error', 'User already exists');
                 }
 
+                if (!bodyUser.bio) {
+                    bodyUser.bio = 'A traveller from a distant land.';
+                }
+
                 return this.data.users.create(bodyUser);
             })
             .catch((err) => {

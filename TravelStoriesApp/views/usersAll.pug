@@ -15,7 +15,7 @@ block content
                 h4.group.inner.list-group-item-heading
                     =user.username
                 p.group.inner.list-group-item-text
-                    | User bio goes here
+                    =user.bio
                 .row
                     a.btn.btn-success(href='/user/' + user._id)
                         | Visit Profile
