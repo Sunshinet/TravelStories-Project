@@ -20,7 +20,7 @@ block content
                form(action='/auth/sign-up', method ="POST").login
                 input(type='text' id='username' name="username" required placeholder='Username')
                 input(type='password' id='password' name="password" required placeholder='Password')
-                input(type='text' id='email' name="email" placeholder='Email')
+                input(type='text' id='email' name="email" required placeholder='Email')
                 input(type='text' id='bio' name="bio" placeholder='A short bio')
                 input.btn.btn-info.btn-sm(type='submit', value='Done')
                  
