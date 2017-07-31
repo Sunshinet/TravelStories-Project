@@ -29,11 +29,11 @@ const attachTo = (app, data) => {
         return controller.getEditForm(req, res);
     });
 
-    app.post('/stories/:id', (req, res) => {
+    app.post('/stories/edit/:id', (req, res) => {
         return controller.edit(req, res);
     });
 
-    app.post('/stories/:id', (req, res) => {
+    app.post('/stories/delete/:id', (req, res) => {
         return controller.delete(req, res);
     });
 

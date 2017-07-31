@@ -23,8 +23,9 @@ block content
                     |  has travelled to places such as 
                     if user.stories
                       each story in user.stories
-                        =story.place.name
-                        |, 
+                        if story.visible
+                            =story.place.name
+                            |, 
                     | and many, many more!
             .row
                 a.btn.btn-success(href='/user/' + user._id)

@@ -5,7 +5,7 @@ block content
   //-           |tinymce.init({ selector:'textarea' });
   link(rel='stylesheet', href="../../public/css/story-edit.css")
   div.container-form
-    form.form-group(action="/stories/" +context._id method="POST" id="useThis")
+    form.form-group(action="/stories/edit/" +context._id method="POST" id="useThis")
       label(for="title")
         | Story Title:
       input.form-control(name="titleStory" value = context.titleStory id="title" required type="text" )

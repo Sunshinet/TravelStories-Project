@@ -101,6 +101,7 @@ const init = (data) => {
                 name: story.place,
             };
 
+            const storyID = req.params.id;
             const user = req.user;
 
             story.user = {
@@ -110,31 +111,30 @@ const init = (data) => {
 
             return Promise
                 .all([
-                    data.stories.findById(req.params.id),
+                    data.stories.findById(storyID),
                     data.places.findOrCreateBy(place),
                 ])
                 .then(([dbStory, dbPlace]) => {
                     dbPlace.name = story.place;
                     dbPlace.stories = dbPlace.stories || [];
                     dbPlace.stories.push({
-                        _id: dbStory._id,
+                        _id: dbStory[0]._id,
                         titleStory: story.titleStory,
                         body: story.body,
-                        visible: story.visible,
+                        visible: true,
                     });
 
                     dbStory[0].place.name = place.name;
                     dbStory[0].titleStory = story.titleStory;
                     dbStory[0].body = story.body;
-                    
 
                     user.stories = user.stories || [];
                     user.stories.push({
-                        _id: dbStory._id,
+                        _id: dbStory[0]._id,
                         titleStory: story.titleStory,
                         body: story.body,
                         place: story.place,
-                        visible: story.visible,
+                        visible: true,
                     });
 
                     return Promise.all([
@@ -142,7 +142,7 @@ const init = (data) => {
                         data.places.updateById(dbPlace),
                         data.users.updateById(user),
                     ]);
-                 })
+                })
                 .then(() => {
                     return res.redirect('/stories');
                 })
@@ -154,12 +154,17 @@ const init = (data) => {
         },
 
         delete(req, res) {
+            const storyID = req.params.id;
+
             return Promise
-                .resolve(data.stories.findById(req.params.id))
+                .resolve(
+                    data.stories.findById(storyID),
+                )
                 .then((dbStory) => {
                     dbStory[0].visible = false;
+                    console.log(dbStory[0]);
                     return Promise.resolve(
-                        data.stories.updateById(dbStory[0])
+                        data.stories.updateById(dbStory[0]),
                     );
                 })
                 .then(() => {
@@ -167,7 +172,8 @@ const init = (data) => {
                 })
                 .catch((err) => {
                     req.flash('error', err);
-                    return res.redirect('/stories/');
+                    console.log(err);
+                    return res.redirect('/stories/form');
                 });
         },
     };
