@@ -117,25 +117,26 @@ const init = (data) => {
                     dbPlace.name = story.place;
                     dbPlace.stories = dbPlace.stories || [];
                     dbPlace.stories.push({
-                        _id: req.params.id,
-                        titleStory: dbStory[0].titleStory,
-                        body: dbStory[0].body,
-                        visible: dbStory[0].visible,
+                        _id: dbStory._id,
+                        titleStory: story.titleStory,
+                        body: story.body,
+                        visible: story.visible,
                     });
 
-                    dbStory.place = {
-                        _id: dbPlace._id,
-                        name: dbPlace.name,
-                    };
+                    dbStory[0].place.name = place.name;
+                    dbStory[0].titleStory = story.titleStory;
+                    dbStory[0].body = story.body;
+                    
 
                     user.stories = user.stories || [];
                     user.stories.push({
                         _id: dbStory._id,
-                        titleStory: dbStory.titleStory,
-                        body: dbStory.body,
-                        place: dbStory.place,
-                        visible: dbStory.visible,
+                        titleStory: story.titleStory,
+                        body: story.body,
+                        place: story.place,
+                        visible: story.visible,
                     });
+
                     return Promise.all([
                         data.stories.updateById(dbStory[0]),
                         data.places.updateById(dbPlace),
