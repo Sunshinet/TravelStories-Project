@@ -17,6 +17,8 @@ class StoriesController {
     signUp(req, res) {
         const bodyUser = req.body;
 
+        req.body.hasAvatar = false;
+
         this.data.users.findByUsername(bodyUser.username)
             .then((dbUser) => {
                 if (dbUser) {
