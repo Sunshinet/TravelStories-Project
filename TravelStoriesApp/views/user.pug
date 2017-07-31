@@ -12,7 +12,7 @@ block content
                 img.avatar.group.list-group-image(src='../public/avatars/' + context._id, alt='user avatar')
             else
                 img.avatar.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='generic avatar')
-            if user._id == context._id
+            if user.username == context.username
               form.container(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
                   input.row.btn.btn-success.btn-rounded(name='avatar' id= 'avatar' required type='file')
                   input(name='id' type='hidden' value=context._id)
