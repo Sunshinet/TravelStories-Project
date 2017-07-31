@@ -2,9 +2,11 @@
 
 $(document).ready(function($) {
     $('.capital').textEffect({
-        effect: 'slide',
+        effect: 'fade',
+        effectSpeed: 35,
     });
     $('.italic').textEffect({
-        effect: 'slide',
+        effect: 'fade',
+        effectSpeed: 35,
     });
 });
