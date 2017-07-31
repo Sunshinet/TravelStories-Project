@@ -5,7 +5,7 @@ const attachTo = (app, data) => {
         return controller.getAll(req, res);
     });
 
-    app.get('/stories/form', (req, res) => {
+    app.get('/stories/create-story', (req, res) => {
         if (!req.user) {
             return Promise.resolve()
                 .then(() => {
