@@ -3,7 +3,8 @@ class Storie {
         return typeof model !== 'undefined' &&
             typeof model.titleStory === 'string' &&
             model.titleStory.length > 3 &&
-            typeof model.body === 'string';
+            typeof model.body === 'string' &&
+            model.body.length > 1;
     }
 
     get id() {

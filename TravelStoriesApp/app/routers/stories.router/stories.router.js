@@ -16,12 +16,6 @@ const attachTo = (app, data) => {
     });
 
     app.post('/stories', (req, res) => {
-        if (!req.user) {
-            return Promise.resolve()
-                .then(() => {
-                    res.redirect('/auth/sign-in');
-                });
-        }
         return controller.create(req, res);
     });
 

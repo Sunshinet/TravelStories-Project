@@ -16,9 +16,9 @@ class StoriesData extends BaseMongoDbData {
     }
 
     create(model) {
-        // if (!this._isModelValid(model)) {
-        //     return Promise.reject('Validation failed!');
-        // }
+        if (!this._isModelValid(model)) {
+            return Promise.reject('Validation failed!');
+        }
         return this.collection.insert(model)
             .then(() => {
                 return model;

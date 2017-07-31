@@ -1,9 +1,9 @@
 class Place {
     static isValid(model) {
-        return typeof model !== 'undefined' &&
-            typeof model.text === 'string' &&
-            model.text.length > 3;
-    }
+        // return typeof model !== 'undefined' &&
+        //     typeof model.name === 'string' &&
+        //     typeof model.name.length >1;
+     }
 
     get id() {
         return this._id;
