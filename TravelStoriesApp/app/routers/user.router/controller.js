@@ -14,6 +14,7 @@ const init = (data) => {
                         'user',
                         {
                              context: currentUser,
+                             title: currentUser.username + "'s Profile"
                         });
                 });
         },
