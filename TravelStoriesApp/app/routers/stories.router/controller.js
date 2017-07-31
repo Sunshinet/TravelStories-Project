@@ -154,7 +154,6 @@ const init = (data) => {
             )
                 .then((dbStory) => {
                     dbStory[0].visible = false;
-                    console.log(dbStory[0]);
                     return Promise.resolve(
                         data.stories.updateById(dbStory[0]),
                     );

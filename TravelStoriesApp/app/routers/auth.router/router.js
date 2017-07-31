@@ -16,7 +16,6 @@ const attachTo = (app, data) => {
             return controller.signOut(req, res);
         })
         .post('/sign-up', (req, res) => {
-            console.log(req);
             return controller.signUp(req, res);
         })
         .post('/sign-in', passport.authenticate('local', {
