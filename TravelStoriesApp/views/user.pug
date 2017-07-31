@@ -2,16 +2,22 @@ extends main
 
 block content
 
-    script(src='../public/javascript/grid')
+    script(src='../public/javascript/grid.js')
     link(rel='stylesheet', href='../public/css/grid.css')
-    
+    link(rel='stylesheet', href='../public/css/user.css')
+
     .container
         .well
             if user.hasAvatar == true
                 img.group.list-group-image(src='../public/avatars/' + user._id, alt='user avatar')
             else
                 img.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='generic avatar')
-            .caption
+            
+            form.container(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
+                input.row.btn.btn-success.btn-rounded(name='avatar' id= 'avatar' required type='file')
+                input(name='id' type='hidden' value=user._id)
+                button.row.btn.btn-info.btn-rounded(type='submit' name="submit")
+                    | Upload Avatar
             h1.group.inner.list-group-item-heading
                 =user.username
             h4.group.inner.list-group-item-text
@@ -28,11 +34,11 @@ block content
                             |, 
                     | and many, many more!
             .row
-                a.btn.btn-success(href='/user/' + user._id)
-                    | Visit Profile
                 if user.email != ""
-                    a.right-btn.btn.btn-info.btn-rounded(href='mailto:' + user.email)
-                        | Contact Me
+                    a.btn.btn-info.btn-rounded(href='mailto:' + user.email)
+                        | Send an Email
+                
+
 
     if user.stories
       each story in user.stories
@@ -46,9 +52,3 @@ block content
           h1
           | Story Body: 
           =story.body
-
-    form.form-group(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
-      input.form-control(name='avatar' id= 'place' required type='file')
-      input.form-control(name='id' type='hidden' value=user._id)
-      button.btn.btn-info.btn-rounded(type='submit' name="submit")
-        | Upload Avatar
