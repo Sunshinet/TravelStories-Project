@@ -6,8 +6,13 @@ block content
     =context.place.name
   h1
     =context.user.username
+  h1
+    =context.body
   div
     button#del-btn.btn.btn-success
       | Delete
     a(href="/stories/edit-story/" + context._id)#edit-btn.btn.btn-success
       | Edit
+    //- form(method="post", action="/stories/form")
+    //-   input(type="hidden" name="storyId" value=context.id)
+    //-   button.btn.btn-warning.btn-edit Edit    

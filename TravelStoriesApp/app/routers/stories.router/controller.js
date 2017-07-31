@@ -23,13 +23,17 @@ const init = (data) => {
         getForm(req, res) {
             return Promise.resolve()
                 .then(() => {
+                   // console.log
                     return res.render('stories/create-form');
                 });
         },
         getEditForm(req, res) {
-            return Promise.resolve()
-                .then(() => {
-                    return res.render('stories/edit-form');
+            return data.stories.findById(req.params.id)
+                .then((result) => {
+                   console.log(result);
+                    return res.render('stories/edit-form', {
+                        context: result[0],
+                    });
                 });
         },
         create(req, res) {
