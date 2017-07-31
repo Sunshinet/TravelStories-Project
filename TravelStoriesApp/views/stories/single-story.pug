@@ -1,17 +1,20 @@
 extends ../main
 block content
-  h1
-    =context.titleStory
-  h1
-    =context.place.name
-  h1
-    =context.user.username
-  h1
-    =context.body
   div
-    if(user.username==context.user.username)
-      form.form-group(action="/stories/delete/" +context._id method="POST" id="useThis")
-        button#del-btn.btn.btn-success
-          | Delete your story
-      a(href="/stories/edit-story/" + context._id)#edit-btn.btn.btn-success
-        | Edit
+    h1
+      =context.titleStory
+    div
+      p
+      =context.place.name
+    a(href='#')
+      =context.user.username
+    div
+      p
+      =context.body
+    div
+      if(user.username==context.user.username)
+        form.form-group(action="/stories/delete/" +context._id method="POST" id="useThis")
+          button#del-btn.btn.btn-success
+            | Delete your story
+        a(href="/stories/edit-story/" + context._id)#edit-btn.btn.btn-success
+          | Edit
