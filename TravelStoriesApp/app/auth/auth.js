@@ -2,12 +2,14 @@ const session = require('express-session');
 const passport = require('passport');
 const { Strategy } = require('passport-local');
 const MongoStore = require('connect-mongo')(session);
+const md5 = require('js-md5');
 
 const config = require('../../server.config');
 
 const applyTo = (app, data) => {
     passport.use(new Strategy((username, password, done) => {
-        data.users.checkPassword(username, password)
+        const pass = md5(password);
+        data.users.checkPassword(username, pass)
             .then(() => {
                 return data.users.findByUsername(username);
             })

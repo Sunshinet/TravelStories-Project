@@ -1,3 +1,5 @@
+const md5 = require('js-md5');
+
 class StoriesController {
     constructor(data) {
         this.data = data;
@@ -16,6 +18,7 @@ class StoriesController {
 
     signUp(req, res) {
         const bodyUser = req.body;
+        bodyUser.password = md5(req.body.password);
 
         req.body.hasAvatar = false;
 

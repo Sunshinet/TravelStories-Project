@@ -14,6 +14,7 @@ class UsersData extends BaseData {
     }
 
     checkPassword(username, password) {
+        
         return this.findByUsername(username)
             .then((user) => {
                 if (!user) {
