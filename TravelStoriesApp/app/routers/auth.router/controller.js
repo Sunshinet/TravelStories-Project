@@ -11,11 +11,13 @@ class StoriesController {
     getSignInForm(req, res) {
         return res.render('auth/sign-in', { title: 'Sign In' });
     }
+    getWelcomeScreen(req, res) {
+        return res.redirect('/');
+    }
     signOut(req, res) {
         req.logout();
         return res.redirect('/');
     }
-
     signUp(req, res) {
         const bodyUser = req.body;
         bodyUser.password = md5(req.body.password);

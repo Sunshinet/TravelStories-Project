@@ -12,6 +12,13 @@ const attachTo = (app, data) => {
         .get('/sign-in', (req, res) => {
             return controller.getSignInForm(req, res);
         })
+        .get('/welcome', (req, res) => {
+            console.log('welcome');
+            return controller.getWelcomeScreen(req, res);
+        })
+        .get('/', (req, res) => {
+            return controller.getWelcomeScreen(req, res);
+        })
         .post('/sign-out', (req, res) => {
             return controller.signOut(req, res);
         })

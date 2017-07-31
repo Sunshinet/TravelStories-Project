@@ -5,7 +5,7 @@ const path = require('path');
 
 const attachTo = (app, data) => {
     app.get('/', (req, res) => {
-        return res.render('main', { title: 'TravellStories' });
+        return res.render('welcome', { title: 'TravelStories' });
     });
 
     fs.readdirSync(__dirname)

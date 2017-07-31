@@ -1,0 +1,34 @@
+extends main
+block content
+
+    link(rel='stylesheet', href='../public/css/grid.css')
+    link(rel='stylesheet', href='../public/css/welcome.css')
+
+    .container
+        .well
+          h1#one.capital
+            | TRAVELLING
+        
+          h2#two.italic
+            | it leaves you
+        
+          h1#three.capital
+            | SPEECHLESS
+        
+          h2#four.italic
+            | then turns you into a
+        
+          h1#five.capital
+            | STORYTELLER
+
+    if user
+        .row
+            a.invite.btn.btn-info.btn-rounded(href='')
+                | Share Your Story
+    else
+        .row
+            a.invite.btn.btn-info.btn-rounded(href='auth/sign-up')
+                | Begin Your Journey
+
+    script(src='../public/javascript/textEffect.jquery.js')
+    script(src='../public/javascript/welcome.js')
