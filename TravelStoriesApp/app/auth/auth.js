@@ -22,7 +22,7 @@ const applyTo = (app, data) => {
     }));
 
     app.use(session({
-        store: new MongoStore({ url: config.connectionString }),
+        store: new MongoStore({ url: config.connectionStringAWS }),
         secret: config.sessionSecret,
         resave: true,
         saveUninitialized: true,
