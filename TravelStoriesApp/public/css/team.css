@@ -1,0 +1,25 @@
+.member{
+    display: inline-block;
+    padding-right: 100px;
+    padding-bottom: 30px;
+}
+
+.team{
+    text-align: center;
+}
+
+.links{
+    text-align: center;
+    font-size: 2rem;
+}
+
+#telerik-icon{
+    width: 25px;
+    margin-right: 3px;
+    margin-left: 15px;
+}
+
+#github-icon{
+    width: 20px;
+    margin-right: 3px;
+}

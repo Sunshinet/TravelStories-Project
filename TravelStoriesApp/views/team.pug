@@ -1,3 +1,29 @@
 extends main
 block content
-    | TODO: Show team members
+    link(rel='stylesheet', href="../../public/css/team.css")
+    div.team
+        div.member
+            h3
+                div
+                    img(src='../public/pictures/tania.jpg')
+                a(href='https://telerikacademy.com/Users/sunshinet' target='_blank')
+                    | Tania Dimitrova
+        div.member
+            h3
+                div
+                    img(src='../public/pictures/lucho.jpg')
+                a(href='https://telerikacademy.com/Users/olebg' target='_blank')
+                    | Lucho Gizdov
+        div.member
+            h3
+                div
+                    img(src='../public/pictures/iskren.jpg')
+                a(href='https://telerikacademy.com/Users/iDonev' target='_blank')
+                        | Iskren Donev
+    div.links
+        img(src='../public/pictures/github.png')#github-icon
+        a(href='https://github.com/olebg/TravelStories-Project' target='_blank')
+                    | GitHub Repo
+        img(src='../public/pictures/telerik.png')#telerik-icon
+        a(href='#' target='_blank')
+                    | Telerik Best
