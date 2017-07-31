@@ -12,18 +12,18 @@ block content
                 img.avatar.group.list-group-image(src='../public/avatars/' + context._id, alt='user avatar')
             else
                 img.avatar.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='generic avatar')
-            
-            form.container(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
-                input.row.btn.btn-success.btn-rounded(name='avatar' id= 'avatar' required type='file')
-                input(name='id' type='hidden' value=context._id)
-                button.row.btn.btn-info.btn-rounded(type='submit' name="submit")
+            if user._id == context._id
+              form.container(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
+                  input.row.btn.btn-success.btn-rounded(name='avatar' id= 'avatar' required type='file')
+                  input(name='id' type='hidden' value=context._id)
+                  button.row.btn.btn-info.btn-rounded(type='submit' name="submit")
                     | Upload Avatar
             h1.group.inner.list-group-item-heading
                 =context.username
             h4.group.inner.list-group-item-text
                 =context.bio
             h4.group.inner.list-group-item-text
-                if !context.stories
+                if context.stories.length == 0
                     | 
                     =context.username
                     |  hasn't been around all that much...
@@ -40,10 +40,11 @@ block content
                         | and many, many more!
             .row
                 if context.email != ""
-                    a.btn.btn-info.btn-rounded(href='mailto:' + context.email)
-                        | Send an Email
+                    if user.email != context.email
+                        a.btn.btn-info.btn-rounded(href='mailto:' + context.email)
+                            | Send an Email
                 
-    if context.stories
+    if context.stories.length
       .container
         .well
           h1

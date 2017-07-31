@@ -55,6 +55,10 @@ class BaseMongoDbData {
     }
 
     findByIds(arrOfIds) {
+        if (!arrOfIds) {
+            arrOfIds = 'empty';
+        }
+        if (!arrOfIds) {
         return this.collection.find({
             _id: {
                 $in: arrOfIds,
@@ -70,25 +74,32 @@ class BaseMongoDbData {
 
                 return models;
             });
+        }
+        return [];
     }
 
     findByIdsVisible(arrOfIds) {
-        return this.collection.find({
-            _id: {
-                $in: arrOfIds,
-            },
-            visible: true,
-        })
-            .toArray()
-            .then((models) => {
-                if (this.ModelClass.toViewModel) {
-                    return models.map(
-                        (model) => this.ModelClass.toViewModel(model)
-                    );
-                }
-
-                return models;
-            });
+        if (!arrOfIds) {
+            arrOfIds = 'empty';
+        }
+        if (arrOfIds !== 'empty') {
+            return this.collection.find({
+                _id: {
+                    $in: arrOfIds,
+                },
+                visible: true,
+            })
+                .toArray()
+                .then((models) => {
+                    if (this.ModelClass.toViewModel) {
+                        return models.map(
+                            (model) => this.ModelClass.toViewModel(model)
+                        );
+                    }
+                    return models;
+                });
+        }
+        return [];
     }
 
     getById() {
