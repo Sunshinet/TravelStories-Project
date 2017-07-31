@@ -46,7 +46,7 @@ const attachTo = (app, data) => {
             if (err) {
                 return res.end('' + err);
             }
-            return res.end('File is uploaded');
+            return res.render('user');
         });
     });
 };
