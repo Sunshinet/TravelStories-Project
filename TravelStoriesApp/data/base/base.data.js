@@ -54,6 +54,43 @@ class BaseMongoDbData {
             });
     }
 
+    findByIds(arrOfIds) {
+        return this.collection.find({
+            _id: {
+                $in: arrOfIds,
+            },
+        })
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
+
+                return models;
+            });
+    }
+
+    findByIdsVisible(arrOfIds) {
+        return this.collection.find({
+            _id: {
+                $in: arrOfIds,
+            },
+            visible: true,
+        })
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
+
+                return models;
+            });
+    }
+
     getById() {
         return new Promise((resolve, reject) => {
         });

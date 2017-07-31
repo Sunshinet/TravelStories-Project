@@ -8,10 +8,9 @@ html(lang='en')
     meta(name='viewport', content='width=device-width')
     title= title
     script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
-    script(src='../public/javascript/chat.js')
+    //- script(src='../libs/javascript/chat.js')
     link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
     block css
-      
       link(rel='stylesheet', href='../public/css/style.css')
       link(rel='stylesheet', href='/libs/toastr/build/toastr.css')
     block js
@@ -19,7 +18,7 @@ html(lang='en')
        script(src='/libs/toastr/build/toastr.min.js')
     if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
-  body(style="background-image: url('../public/pictures/75614.jpg');")
+  body()
       +nav()
       
       block content

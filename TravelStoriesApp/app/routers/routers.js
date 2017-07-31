@@ -15,11 +15,11 @@ const attachTo = (app, data) => {
             require(modulePath).attachTo(app, data);
         });
 
-    // app.all('*', (req, res) => {
-    //     res.status(404);
-    //     res.render('error');
-    //     res.end();
-    // });
+    app.all('*', (req, res) => {
+        res.status(404);
+        res.render('error');
+        res.end();
+    });
 };
 
 module.exports = { attachTo };
