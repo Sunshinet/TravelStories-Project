@@ -3,6 +3,10 @@ const init = (data) => {
         getAll(req, res) {
             return data.stories.getAll()
                 .then((stories) => {
+                    stories.every(function (story) {
+                        return story.visible === false;
+                    });
+
                     return res.render('stories/stories-all', {
                         title: 'All Stories',
                         context: stories,
@@ -13,10 +17,8 @@ const init = (data) => {
         getOne(req, res) {
             return data.stories.findById(req.params.id)
                 .then((story) => {
-                    return res.render('stories/single-story', {
-                        title: 'One Story',
-                        context: story[0],
-                    });
+                    return res.render('stories/single-story',
+                        { context: story[0] });
                 });
         },
 
@@ -46,6 +48,7 @@ const init = (data) => {
 
             const user = req.user;
 
+
             story.user = {
                 id: user._id,
                 username: user.username,
@@ -56,33 +59,22 @@ const init = (data) => {
                     data.stories.create(story),
                     data.places.findOrCreateBy(place),
                 ])
-                .then(([dbStory, dbPlaces]) => {
-                    dbPlaces.name = story.place;
-                    dbPlaces.stories = dbPlaces.stories || [];
-                    dbPlaces.stories.push({
-                        _id: dbStory._id,
-                        titleStory: dbStory.titleStory,
-                        body: dbStory.body,
-                        visible: dbStory.visible,
-                    });
+                .then(([dbStory, dbPlace]) => {
+                    dbPlace.name = story.place;
+                    dbPlace.stories = dbPlace.stories || [];
+                    dbPlace.stories.push(dbStory._id);
 
                     dbStory.place = {
-                        _id: dbPlaces._id,
-                        name: dbPlaces.name,
+                        _id: dbPlace._id,
+                        name: dbPlace.name,
                     };
 
                     user.stories = user.stories || [];
-                    user.stories.push({
-                        _id: dbStory._id,
-                        titleStory: dbStory.titleStory,
-                        body: dbStory.body,
-                        place: dbStory.place,
-                        visible: dbStory.visible,
-                    });
+                    user.stories.push(dbStory._id);
 
                     return Promise.all([
                         data.stories.updateById(dbStory),
-                        data.places.updateById(dbPlaces),
+                        data.places.updateById(dbPlace),
                         data.users.updateById(user),
                     ]);
                 })
@@ -158,8 +150,8 @@ const init = (data) => {
 
             return Promise
                 .resolve(
-                    data.stories.findById(storyID),
-                )
+                data.stories.findById(storyID),
+            )
                 .then((dbStory) => {
                     dbStory[0].visible = false;
                     console.log(dbStory[0]);

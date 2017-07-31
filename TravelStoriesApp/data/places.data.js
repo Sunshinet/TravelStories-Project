@@ -11,7 +11,6 @@ class PlacesData extends BaseMongoDbData {
             .findOne({ name: prop })
             // .toArrey()
             .then((res) => {
-                console.log(res);
             });
     }
 

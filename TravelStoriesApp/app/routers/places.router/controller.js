@@ -9,7 +9,7 @@ const init = (data) => {
                     });
                 });
         },
-            getAllapi(req, res) {
+        getAllapi(req, res) {
             return data.places.getAll()
                 .then((places) => {
                     return res.send(places);
@@ -21,12 +21,18 @@ const init = (data) => {
         },
 
         getOne(req, res) {
+            let currentPlace;
             return data.places.findById(req.params.id)
                 .then((place) => {
-                    console.log(place);
+                    currentPlace = place[0];
+                    return data.stories.findByIdsVisible(currentPlace.stories);
+                })
+                .then((stories) => {
+                    currentPlace.stories = stories;
+                    
                     return res.render('places/single-place', {
                         title: 'One Place',
-                        context: place[0],
+                        context: currentPlace,
                     });
                 });
         },

@@ -12,7 +12,7 @@ Promise.resolve()
             console.log(`Server is running at :${ServerConfig.port}`));
           const io = socket(server);
           io.on('connection', (websocket) => {
-              console.log('stana');
+              // console.log('stana');
           });
     })
     .catch((err) => {
