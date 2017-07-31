@@ -23,7 +23,6 @@ const init = (data) => {
         getOne(req, res) {
             return data.places.findById(req.params.id)
                 .then((place) => {
-                    console.log(place);
                     return res.render('places/single-place', {
                         title: 'One Place',
                         context: place[0],
@@ -35,7 +34,6 @@ const init = (data) => {
             const name = req.params.name;
             return data.places.getByPlace(name)
                 .then((result) => {
-                    console.log(result);
                 });
         },
     };
