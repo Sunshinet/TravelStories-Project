@@ -23,16 +23,21 @@ block content
             h4.group.inner.list-group-item-text
                 =user.bio
             h4.group.inner.list-group-item-text
-                span.glyphicon.glyphicon-map-marker
+                if !user.stories
                     | 
                     =user.username
-                    |  has travelled to places such as 
-                    if user.stories
-                      each story in user.stories
-                        if story.visible
-                            =story.place.name
-                            |, 
-                    | and many, many more!
+                    |  hasn't been around all that much...
+                else
+                    span.glyphicon.glyphicon-map-marker
+                        | 
+                        =user.username
+                        |  has travelled to places such as 
+                        if user.stories
+                        each story in user.stories
+                            if story.visible
+                                =story.place.name
+                                |, 
+                        | and many, many more!
             .row
                 if user.email != ""
                     a.btn.btn-info.btn-rounded(href='mailto:' + user.email)
