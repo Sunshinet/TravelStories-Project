@@ -28,7 +28,7 @@ const init = (data) => {
                 });
         },
         getEditForm(req, res) {
-            return data.stories.findById(req.params.id)
+            return data.stories.findById(req.params.id)  // vzem story s id
                 .then((result) => {
                    console.log(result);
                     return res.render('stories/edit-form', {
@@ -104,10 +104,10 @@ const init = (data) => {
 
             const user = req.user;
 
-            // story.user = {
-            //     id: user._id,
-            //     username: user.username,
-            // };
+            story.user = {
+                id: user._id,
+                username: user.username,
+            };
 
             return Promise
                 .all([
@@ -115,39 +115,39 @@ const init = (data) => {
                     data.places.findOrCreateBy(place),
                 ])
                 .then(([dbStory, dbPlaces]) => {
-                    console.log(req.params.id);
-                    // dbPlaces[0].name = story.place;
-                    // dbPlaces[0].stories = dbPlaces[0].stories || [];
-                    // dbPlaces.stories.push({
-                    //     _id: dbStory._id,
-                    //     titleStory: dbStory.titleStory,
-                    //     body: dbStory.body,
-                    //     visible: dbStory.visible,
-                    // });
+                    console.log(dbStory, dbPlaces)
+                //     dbPlaces.name = story.place;
+                //     dbPlaces.stories = dbPlaces.stories || [];
+                //     dbPlaces.stories.push({
+                //         _id: dbStory._id,
+                //         titleStory: dbStory.titleStory,
+                //         body: dbStory.body,
+                //         visible: dbStory.visible,
+                //     });
 
-                    // dbStory.place = {
-                    //     _id: dbPlaces._id,
-                    //     name: dbPlaces.name,
-                    // };
+                //     dbStory.place = {
+                //         _id: dbPlaces._id,
+                //         name: dbPlaces.name,
+                //     };
 
-                    // user.stories = user.stories || [];
-                    // user.stories.push({
-                    //     _id: dbStory._id,
-                    //     titleStory: dbStory.titleStory,
-                    //     body: dbStory.body,
-                    //     place: dbStory.place,
-                    //     visible: dbStory.visible,
-                    // });
+                //     user.stories = user.stories || [];
+                //     user.stories.push({
+                //         _id: dbStory._id,
+                //         titleStory: dbStory.titleStory,
+                //         body: dbStory.body,
+                //         place: dbStory.place,
+                //         visible: dbStory.visible,
+                //     });
 
-                    return Promise.all([
-                        data.stories.updateById(dbStory[0]),
-                        data.places.updateById(dbPlaces),
-                        data.users.updateById(user),
-                    ]);
-                })
-                .then(() => {
-                    return res.redirect('/stories');
-                });
+                //     return Promise.all([
+                //         data.stories.updateById(dbStory),
+                //         data.places.updateById(dbPlaces),
+                //         data.users.updateById(user),
+                //     ]);
+                 });
+                // .then(() => {
+                //     return res.redirect('/stories');
+                // })
                 // .catch((err) => {
                 //     req.flash('error', err);
                 //     return res.redirect('/stories/form');

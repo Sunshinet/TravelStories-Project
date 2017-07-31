@@ -29,7 +29,7 @@ const attachTo = (app, data) => {
         return controller.getEditForm(req, res);
     });
 
-    app.post('/stories-update', (req, res) => {
+    app.post('/stories/:id', (req, res) => {
         return controller.edit(req, res);
     });
 
