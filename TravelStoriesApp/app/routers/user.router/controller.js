@@ -13,7 +13,6 @@ const init = (data) => {
                     return res.render(
                         'user',
                         {
-                             title: 'My Profile',
                              context: currentUser,
                         });
                 });

@@ -3,7 +3,7 @@ const init = (data) => {
         getAll(req, res) {
             return data.stories.getAll()
                 .then((stories) => {
-                    stories.every(function (story) {
+                    stories.every((story) => {
                         return story.visible === false;
                     });
 
