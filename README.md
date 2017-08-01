@@ -4,6 +4,6 @@ Telerik Academy - Season 8 - Web applications with Node.js course
 |:----:|:-----------------------:|
 | [Лъчо Гиздов](https://github.com/olebg) | olebg |
 | [Искрен Донев](https://github.com/iDonev) | iDonev |
-| [Таня Димитрова](https://github.com/Sunshinet) | Сунсхинет |Members
+| [Таня Димитрова](https://github.com/Sunshinet) | Sunshinet |Members
 
 Repository for Team quattro 
