@@ -1,26 +1,25 @@
 extends ../main
-
 block content
+
+    link(rel='stylesheet', href='../public/css/grid.css')
     link(rel='stylesheet', href='../public/css/login.css')
     script(src='../public/javascript/register.js')
-    h1.abc
-      =messages
+
     .container
+        .well
+            h1
+                | Registration
+            .row
+                h5
+                    | Complete this short form below to get going!
+            .row
+                input(type='text' id='username' name="username" required placeholder='Username')
+                input(type='text' id='email' name="email" placeholder='Email')
+            .row
+                input(type='password' id='password' name="password" required placeholder='Password')
+                input(type='password' id='password-repeat' name="password-repeat" required placeholder='Password (again)')
+            .row
+                input(type='text' id='bio' name="bio" placeholder='Tell us a bit about yourself!')
         .row
-          .col-md-12
-            //- .pr-wrap
-            //-   .pass-reset
-            //-     label
-            //-         | Enter the email you signed up with
-            //-     input(type='email', placeholder='Email')
-            //-     input.pass-reset-submit.btn.btn-success.btn-sm(type='submit', value='Submit')
-            .wrap
-              p.form-title
-                 | Registration
-              //- form(action='/auth/sign-up', method ="POST").login
-              input(type='text' id='username' name="username" required placeholder='Username')
-              input(type='password' id='password' name="password" required placeholder='Password')
-              input(type='text' id='email' name="email" placeholder='Email')
-              input(type='text' id='bio' name="bio" placeholder='A short bio')
-              button.btn.btn-info.btn-sm(type='submit', id='reg-btn')
-                | Done
+            button.btn.btn-info.btn-sm(type='submit', id='reg-btn')
+                | Register
