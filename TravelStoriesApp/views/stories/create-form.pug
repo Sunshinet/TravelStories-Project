@@ -1,15 +1,28 @@
 extends ../main
 block content
+
   link(rel='stylesheet', href="../../public/css/story-form.css")
-  div.container-form
-    form.form-group(action="/stories" method="POST" id="useThis")
-      label(for="title")
-        | Story Title:
-      input.form-control(name="titleStory" id="title" required type="text" placeholder="put a title here :)")
-      label(for="place")
-        span.glyphicon.glyphicon-map-marker
-        | Location:
-      input.form-control(name="place" id= "place" required type="text" placeholder="where have you been?")
-      textarea.textBody(name="body" form="useThis" required placeholder="your thoughts....")
+  link(rel='stylesheet', href='../public/css/grid.css')
+
+  .container
+    .well
+      h1
+        | Create a Story
+  .container
+    .well
+      form(action="/stories" method="POST" id="useThis")
+        .row
+          h5
+          .row
+            | Story Title:
+          input(name="titleStory" id="title" required type="text" placeholder="What were you doing?")
+        .row
+          h5
+          .row
+            span.glyphicon.glyphicon-map-marker
+            | Location:
+          input(name="place" id= "place" required type="text" placeholder="Where were you?")
+        .row
+          textarea(name="body" form="useThis" required placeholder="Tell us about your adventures!")
       button.btn.btn-info.btn-rounded
-        | Save your story
+        | Publish
