@@ -14,3 +14,26 @@ body
     height: 25%;
     margin-bottom: 4%;
 }
+
+a {
+    color: darkslategray;
+}
+
+a:hover {
+    text-decoration: none;
+    color: grey;
+}
+
+.line {
+    margin: 0 auto !important;
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+.line:not(:first-child) {
+    border-top: 1px solid darkslategray;
+}
+
+span {
+    margin-left: 10px;
+}

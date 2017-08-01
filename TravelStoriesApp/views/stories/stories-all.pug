@@ -1,13 +1,28 @@
 extends ../main
 block content
-    link(rel='stylesheet', href="../../public/css/stories-all.css")
-    each story in context
-      if story.visible
-        div.singleStory
-          h1.titleStory
-            a(href='/stories/' + story._id)
-              =story.titleStory
-          h1.location 
-            =story.location.name
-          h2.author
-            =story.user.username
+
+  link(rel='stylesheet', href="../../public/css/stories-all.css")
+  link(rel='stylesheet', href='../public/css/grid.css')
+
+  .container
+    .well
+      .row
+        h1
+          | Stories from Around the World
+  .container
+    .well
+      .row
+        if context.length
+          each story in context
+            if story.visible
+              .story-box.line
+                  h3
+                    a.story(href='/stories/' + story._id)
+                      =story.titleStory
+                  h6
+                    | by 
+                    a(href='/user/' + story.user.id)
+                      =story.user.username
+                    span.glyphicon.glyphicon-map-marker
+                    a(href='/locations/' + story.location._id)
+                        =story.location.name
