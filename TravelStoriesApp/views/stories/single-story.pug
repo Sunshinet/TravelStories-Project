@@ -4,15 +4,20 @@ block content
   div.container
     div.story
       h1
+        | Title Story: 
         =context.titleStory
       div
         p
-        =context.place.name
-      a(href='#')
-        =context.user.username
+          | Location: 
+          =context.place.name
+      div
+        | User: 
+        a(href='/user/' + context.user.id)
+          =context.user.username
       div
         p
-        =context.body
+          | Story Text: 
+          =context.body
       div.edit-story
         if(user.username==context.user.username)
           form.form-group(action="/stories/delete/" +context._id method="POST" id="del-form")
