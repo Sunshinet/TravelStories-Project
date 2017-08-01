@@ -27,7 +27,7 @@ class StoriesController {
         this.data.users.findByUsername(bodyUser.username)
             .then((dbUser) => {
                 if (dbUser) {
-                    req.flash('error', 'User already exists');
+                    throw new Error('ima takuv user');
                 }
 
                 if (!bodyUser.bio) {
@@ -37,12 +37,10 @@ class StoriesController {
                 return this.data.users.create(bodyUser);
             })
             .catch((err) => {
-                req.flash('error', err);
+                return err;
             })
             .then(() => {
-                return res.render('auth/sign-up', {
-                    messages: req.flash('error'),
-                });
+                return res.render('auth/sign-up');
             });
     }
 }

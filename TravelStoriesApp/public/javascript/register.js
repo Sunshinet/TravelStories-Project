@@ -41,7 +41,8 @@ $(document).ready(() => {
         }
 
         if (emailForm.length > 1 && !emailTest) {
-            toastr.error('Invalid email. Must be in the format sample@email.com.');
+            toastr.error(`Invalid email.
+            Must be in the format sample@email.com.`);
             return;
         }
 

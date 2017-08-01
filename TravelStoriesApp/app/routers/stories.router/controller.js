@@ -140,7 +140,6 @@ const init = (data) => {
                 })
                 .catch((err) => {
                     req.flash('error', err);
-                    console.log(err);
                     return res.redirect('/stories/form');
                 });
         },
@@ -163,7 +162,6 @@ const init = (data) => {
                 })
                 .catch((err) => {
                     req.flash('error', err);
-                    console.log(err);
                     return res.redirect('/stories/form');
                 });
         },
