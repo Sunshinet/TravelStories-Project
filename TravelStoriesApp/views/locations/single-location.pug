@@ -1,10 +1,26 @@
 extends ../main
 block content
-    h1
-        | All stories in 
-        =context.name
-        | :
-    div
-        each story in context.stories
-            div
-                =story.titleStory
+
+    link(rel='stylesheet', href='../public/css/grid.css')
+    link(rel='stylesheet', href='../public/css/place.css')
+
+    .container
+        .well
+            h1
+                | All Stories in 
+                =context.name
+                | :
+    .container
+        .well
+            if context.stories.length
+                each story in context.stories
+                    .row
+                        h3
+                            a(href='/stories/' + story._id)
+                                =story.titleStory
+                        h5
+                            | By 
+                            =story.user.username
+            else
+                h3
+                    | There are no stories here yet!
