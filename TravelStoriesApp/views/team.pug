@@ -1,26 +1,41 @@
 extends main
 block content
+    link(rel='stylesheet', href="../../public/css/grid.css")
     link(rel='stylesheet', href="../../public/css/team.css")
+    
+    .container
+        .well
+            .row
+                h1
+                    | Meet the Team
+    
     div.team
         div.member
                 div
                     img(src='../public/pictures/tania.jpg' alt='tania image')
                 a(href='https://telerikacademy.com/Users/sunshinet' target='_blank')
                     | Tania Dimitrova
+                h5
+                    | @sunshinet
         div.member
                 div
                     img(src='../public/pictures/lucho.jpg' alt='lucho image')
                 a(href='https://telerikacademy.com/Users/olebg' target='_blank')
                     | Lucho Gizdov
+                h5
+                    | @olebg
         div.member
                 div
                     img(src='../public/pictures/iskren.jpg' alt='iskren image')
                 a(href='https://telerikacademy.com/Users/iDonev' target='_blank')
-                        | Iskren Donev
-    div.links
-        img(src='../public/pictures/github.png' alt='github image')#github-icon
-        a(href='https://github.com/olebg/TravelStories-Project' target='_blank')
-                    | GitHub Repo
-        img(src='../public/pictures/telerik.png' alt='telerik image')#telerik-icon
-        a(href='#' target='_blank')
-                    | Telerik Best
+                    | Iskren Donev
+                h5
+                    | @iDonev
+    .container
+        .well
+            img(src='../public/pictures/github.png' alt='github image')#github-icon
+            a(href='https://github.com/olebg/TravelStories-Project' target='_blank')
+                        | GitHub Repo
+            img(src='../public/pictures/telerik.png' alt='telerik image')#telerik-icon
+            a(href='#' target='_blank')
+                        | Telerik Best
