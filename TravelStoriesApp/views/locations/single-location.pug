@@ -20,7 +20,8 @@ block content
                                 =story.titleStory
                         h5
                             | By 
-                            =story.user.username
+                            a(href='/user/' + story.user.id)
+                                =story.user.username
             else
                 h3
                     | There are no stories here yet!

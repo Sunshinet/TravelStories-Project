@@ -1,3 +1,12 @@
+a {
+    color: darkslategray;
+}
+
+a:hover {
+    text-decoration: none;
+    color: grey;
+}
+
 #avatar {
      display: inline-block; 
      margin-left: -90px;
@@ -10,6 +19,20 @@
 h1 {
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.line {
+    margin: 0 auto !important;
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+.line:not(:first-child) {
+    border-top: 1px solid darkslategray;
+}
+
+.line:first-child {
+    padding-top: 20px;
 }
 
 .story {
