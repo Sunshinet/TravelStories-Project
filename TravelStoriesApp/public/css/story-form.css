@@ -1,41 +1,37 @@
-body {
-  background-size: cover;
-    padding: 0;
-    margin: 0;
-}
-.container-form {
-    height: 50%;
-    color:black;
-}
-label{
-    margin-left: 21%;
-    padding-top: 1%;
-    }
-form {
-    width: 100%;
-    opacity:0.9 
-}
-.form-group{
-    width: 70%;
-    height: 100%;
-    margin-left: 15%;
-}
-.form-control{
-    width: 48%;
-    height: 10%;
-    margin-left: 21%;
+button {
+    margin-top: 20px;
 }
 
-textarea{
-    margin-top: 3%;
-    width: 80%;
-    height: 80%;
-    color: black;
-    margin-left: 10%;
-    resize: none;
+form input {
+    margin-left: 20px;
 }
-.btn.btn-info.btn-rounded{
-    display: block;
-    margin-left: 45%;
-    margin-top: 2%;
+
+input {
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+textarea {
+    width: 500px;
+    height: 300px;
+    resize: none;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
 }
