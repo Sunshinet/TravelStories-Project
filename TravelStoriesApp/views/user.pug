@@ -14,11 +14,11 @@ block content
                 img.avatar.group.list-group-image(src='https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png', alt='generic avatar')
             if user
                 if user.username == context.username
-                form.container(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
-                    input.row.btn.btn-success.btn-rounded(name='avatar' id= 'avatar' required type='file')
-                    input(name='id' type='hidden' value=context._id)
-                    button.row.btn.btn-info.btn-rounded(type='submit' name="submit")
-                        | Upload Avatar
+                    form.container(action='/user/avatar' method='POST' id='uploadForm' enctype='multipart/form-data')
+                        input.row.btn.btn-success.btn-rounded(name='avatar' id= 'avatar' required type='file')
+                        input(name='id' type='hidden' value=context._id)
+                        button.row.btn.btn-info.btn-rounded(type='submit' name="submit")
+                            | Upload Avatar
             h1.group.inner.list-group-item-heading
                 =context.username
             h4.group.inner.list-group-item-text
