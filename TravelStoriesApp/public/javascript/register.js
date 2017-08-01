@@ -14,18 +14,24 @@ $(document).ready(() => {
 
         const pattern = new RegExp(/^[a-zA-Z0-9._]{3,20}$/);
         const passPattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/);
-        const emailPattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        const emailPattern = new RegExp(`^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\
+        s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\
+        .[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$`);
         const usernameTest = pattern.test(usernameForm);
         const passTest = passPattern.test(passwordForm);
         const emailTest = emailPattern.test(emailForm);
 
         if (!usernameTest) {
-            toastr.error('Invalid username');
+            toastr.error(`Invalid username. 
+            Allowed characters: all leters, numbers, dots and underscore. 
+            Atleast 3 characters long.`);
             return;
         }
 
         if (!passTest) {
-            toastr.error('Invalid password');
+            toastr.error(`Invalid password. 
+            Must be at least 4 characters long and must include
+            letters in mixed case and numbers.`);
             return;
         }
 
@@ -35,7 +41,7 @@ $(document).ready(() => {
         }
 
         if (emailForm.length > 1 && !emailTest) {
-            toastr.error('Invalid email');
+            toastr.error('Invalid email. Must be in the format sample@email.com.');
             return;
         }
 
