@@ -8,16 +8,19 @@ form input {
 
 input {
     margin: 20px;
-    width: 300px;
+    width: 300px !important;
     text-align: center;
+    margin: 0 auto !important;
 }
 
 textarea {
-    width: 500px;
-    height: 300px;
+    width: 700px !important;
+    height: 300px !important;
+    margin: 0 auto !important;
     resize: none;
-    margin-top: 30px;
+    margin-top: 30px !important;
     text-align: justify;
+
 }
 
 ::-webkit-input-placeholder {

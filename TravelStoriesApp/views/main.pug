@@ -12,9 +12,11 @@ html(lang='en')
     block css
       link(rel='stylesheet', href='../public/css/style.css')
       link(rel='stylesheet', href='/libs/toastr/build/toastr.css')
+      link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     block js
        script(src='/libs/jquery/dist/jquery.js')
        script(src='/libs/toastr/build/toastr.min.js')
+       script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
   body()

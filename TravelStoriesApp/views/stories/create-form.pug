@@ -3,7 +3,6 @@ block content
 
   link(rel='stylesheet', href="../../public/css/story-form.css")
   link(rel='stylesheet', href='../public/css/grid.css')
-
   .container
     .well
       h1
@@ -15,14 +14,14 @@ block content
           h5
           .row
             | Story Title:
-          input(name="titleStory" id="title" required type="text" placeholder="What were you doing?")
+            input.form-control(name="titleStory" id="title" required type="text" placeholder="What were you doing?")
         .row
           h5
           .row
             span.glyphicon.glyphicon-map-marker
             | Location:
-          input(name="place" id= "place" required type="text" placeholder="Where were you?")
+          input.form-control(name="place" id= "place" required type="text" placeholder="Where were you?")
         .row
-          textarea(name="body" form="useThis" required placeholder="Tell us about your adventures!")
+          textarea.form-control(name="body" form="useThis" required placeholder="Tell us about your adventures!")
       button.btn.btn-info.btn-rounded
         | Publish
