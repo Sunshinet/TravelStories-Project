@@ -130,7 +130,7 @@ class BaseMongoDbData {
 
     _isModelValid(model) {
         if (typeof this.validator === 'undefined' ||
-            typeof this.validator.isValid !== 'function') { // if we don`t want validator
+            typeof this.validator.isValid !== 'function') {
             return true;
         }
 
