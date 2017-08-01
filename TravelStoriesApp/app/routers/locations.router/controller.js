@@ -21,11 +21,10 @@ const init = (data) => {
             return data.locations.findById(req.params.id)
                 .then((location) => {
                     currentLocation = location[0];
-                    return data.stories.findByIdsVisible(currentLocation.stories);
+               return data.stories.findByIdsVisible(currentLocation.stories);
                 })
                 .then((stories) => {
                     currentLocation.stories = stories;
-                    
                     return res.render('locations/single-location', {
                         title: 'One Location',
                         context: currentLocation,
