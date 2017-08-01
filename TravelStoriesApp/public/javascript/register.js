@@ -1,5 +1,7 @@
 /* globals $ toastr */
 
+toastr.options.positionClass = 'toast-bottom-right';
+
 $(document).ready(() => {
     const regBtn = $('#reg-btn');
 
