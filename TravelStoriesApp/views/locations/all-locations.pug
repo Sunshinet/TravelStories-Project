@@ -1,0 +1,10 @@
+extends ../main
+block content
+    div
+        h1
+            | All Locations
+        each location in context
+            div
+                h2
+                   a(href='locations/' + location.id) 
+                        =location.name

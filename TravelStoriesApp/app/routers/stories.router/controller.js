@@ -42,8 +42,8 @@ const init = (data) => {
             const story = req.body;
             story.visible = true;
 
-            const place = {
-                name: story.place,
+            const location = {
+                name: story.location,
             };
 
             const user = req.user;
@@ -57,16 +57,16 @@ const init = (data) => {
             return Promise
                 .all([
                     data.stories.create(story),
-                    data.places.findOrCreateBy(place),
+                    data.locations.findOrCreateBy(location),
                 ])
-                .then(([dbStory, dbPlace]) => {
-                    dbPlace.name = story.place;
-                    dbPlace.stories = dbPlace.stories || [];
-                    dbPlace.stories.push(dbStory._id);
+                .then(([dbStory, dbLocation]) => {
+                    dbLocation.name = story.location;
+                    dbLocation.stories = dbLocation.stories || [];
+                    dbLocation.stories.push(dbStory._id);
 
-                    dbStory.place = {
-                        _id: dbPlace._id,
-                        name: dbPlace.name,
+                    dbStory.location = {
+                        _id: dbLocation._id,
+                        name: dbLocation.name,
                     };
 
                     user.stories = user.stories || [];
@@ -74,7 +74,7 @@ const init = (data) => {
 
                     return Promise.all([
                         data.stories.updateById(dbStory),
-                        data.places.updateById(dbPlace),
+                        data.locations.updateById(dbLocation),
                         data.users.updateById(user),
                     ]);
                 })
@@ -89,8 +89,8 @@ const init = (data) => {
 
         edit(req, res) {
             const story = req.body;
-            const place = {
-                name: story.place,
+            const location = {
+                name: story.location,
             };
 
             const storyID = req.params.id;
@@ -104,19 +104,19 @@ const init = (data) => {
             return Promise
                 .all([
                     data.stories.findById(storyID),
-                    data.places.findOrCreateBy(place),
+                    data.locations.findOrCreateBy(location),
                 ])
-                .then(([dbStory, dbPlace]) => {
-                    dbPlace.name = story.place;
-                    dbPlace.stories = dbPlace.stories || [];
-                    dbPlace.stories.push({
+                .then(([dbStory, dbLocation]) => {
+                    dbLocation.name = story.location;
+                    dbLocation.stories = dbLocation.stories || [];
+                    dbLocation.stories.push({
                         _id: dbStory[0]._id,
                         titleStory: story.titleStory,
                         body: story.body,
                         visible: true,
                     });
 
-                    dbStory[0].place.name = place.name;
+                    dbStory[0].location.name = location.name;
                     dbStory[0].titleStory = story.titleStory;
                     dbStory[0].body = story.body;
 
@@ -125,13 +125,13 @@ const init = (data) => {
                         _id: dbStory[0]._id,
                         titleStory: story.titleStory,
                         body: story.body,
-                        place: story.place,
+                        location: story.location,
                         visible: true,
                     });
 
                     return Promise.all([
                         data.stories.updateById(dbStory[0]),
-                        data.places.updateById(dbPlace),
+                        data.locations.updateById(dbLocation),
                         data.users.updateById(user),
                     ]);
                 })

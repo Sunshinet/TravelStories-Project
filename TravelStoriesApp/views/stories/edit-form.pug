@@ -7,10 +7,10 @@ block content
       label(for="title")
         | Story Title:
       input.form-control(name="titleStory" value = context.titleStory id="title" required type="text" )
-      label(for="place")
+      label(for="location")
         span.glyphicon.glyphicon-map-marker
         | Location:
-      input.form-control(name="place" id= "place" required type="text" value = context.place.name)
+      input.form-control(name="location" id= "location" required type="text" value = context.location.name)
       textarea.textBody(name="body" form="useThis" type="text")
         =context.body
       button.btn.btn-info.btn-rounded

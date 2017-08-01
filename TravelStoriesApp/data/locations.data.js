@@ -1,12 +1,12 @@
 const BaseMongoDbData = require('./base/base.data');
-const Place = require('../models/place.model');
+const Location = require('../models/location.model');
 
-class PlacesData extends BaseMongoDbData {
+class LocationsData extends BaseMongoDbData {
     constructor(db) {
-        super(db, Place, Place);
+        super(db, Location, Location);
     }
 
-    getByPlace(prop) {
+    getByLocation(prop) {
         return this.collection
             .findOne({ name: prop })
             // .toArrey()
@@ -19,4 +19,4 @@ class PlacesData extends BaseMongoDbData {
     }
 }
 
-module.exports = PlacesData;
+module.exports = LocationsData;

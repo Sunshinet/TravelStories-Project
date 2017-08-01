@@ -1,4 +1,4 @@
-class Place {
+class Location {
     static isValid(model) {
         // return typeof model !== 'undefined' &&
         //     typeof model.name === 'string' &&
@@ -10,7 +10,7 @@ class Place {
     }
 
     static toViewModel(model) {
-        const viewModel = new Place();
+        const viewModel = new Location();
         Object.keys(model)
             .forEach((prop) => {
                 viewModel[prop] = model[prop];
@@ -20,4 +20,4 @@ class Place {
     }
 }
 
-module.exports = Place;
+module.exports = Location;

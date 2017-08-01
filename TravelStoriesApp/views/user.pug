@@ -32,11 +32,11 @@ block content
                     span.glyphicon.glyphicon-map-marker
                         | 
                         =context.username
-                        |  has travelled to places such as 
+                        |  has travelled to locations such as 
                         if context.stories
                         each story in context.stories
                             if story.visible
-                                =story.place.name
+                                =story.location.name
                                 |, 
                         | and many, many more!
             .row
@@ -58,7 +58,7 @@ block content
                       =story.titleStory
                   h6
                     span.glyphicon.glyphicon-map-marker
-                    =story.place.name
+                    =story.location.name
     else
       .container
         .well
