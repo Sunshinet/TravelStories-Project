@@ -15,7 +15,7 @@ const attachTo = (app, data) => {
     const multer = require('multer');
 
     const storage = multer.diskStorage({
-        destination: function(req, file, callback) {
+        destination: (req, file, callback) => {
             data.users.findById(req.session.passport.user)
             .then((user) => {
                 user.hasAvatar = true;
@@ -26,7 +26,7 @@ const attachTo = (app, data) => {
                 './public/avatars'
             );
         },
-        filename: function(req, file, callback) {
+        filename: (req, file, callback) => {
             callback(
                 null,
                 req.session.passport.user
@@ -37,16 +37,19 @@ const attachTo = (app, data) => {
     const upload = multer({ storage: storage })
         .single('avatar');
 
-    app.get('/', function(req, res) {
+    app.get('/', (req, res) => {
         res.sendFile(__dirname + '/index.html');
     });
 
-    app.post('/user/avatar', function(req, res) {
-        upload(req, res, function(err) {
+    app.post('/user/avatar', (req, res) => {
+        upload(req, res, (err) => {
             if (err) {
                 return res.end('' + err);
             }
-            return res.render('user');
+            const context = req.user;
+            context.stories = data.stories.findByIdsVisible(req.user.stories);
+            context.hasAvatar = true;
+            return res.render('user', { context: context });
         });
     });
 };
