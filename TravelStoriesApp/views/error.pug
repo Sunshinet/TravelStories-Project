@@ -1,5 +1,13 @@
 extends main
-
 block content
-  h1
-    | Page not found :)
+
+    link(rel='stylesheet', href='../public/css/grid.css')
+
+    .container
+        .well
+            .row
+                h1
+                  | That's a 404!
+            .row
+                h5
+                  | You didn't mean to come here, right?

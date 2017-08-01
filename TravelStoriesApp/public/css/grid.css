@@ -77,6 +77,11 @@
     color: darkslategrey;
 }
 
+.well h5
+{
+    color: darkslategrey;
+}
+
 .well img
 {
     border: 1px solid #888888;
