@@ -1,3 +1,10 @@
+img {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+
 .member{
     display: inline-block;
     padding-right: 60px;
@@ -23,11 +30,13 @@
     width: 25px;
     margin-right: 3px;
     margin-left: 15px;
+    vertical-align: -25px;
 }
 
 #github-icon{
     width: 20px;
     margin-right: 3px;
+    vertical-align: -25px;
 }
 
 .member{
