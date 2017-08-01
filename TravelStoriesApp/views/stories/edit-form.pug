@@ -1,17 +1,30 @@
 extends ../main
 block content
+
+  link(rel='stylesheet', href="../../public/css/story-form.css")
   link(rel='stylesheet', href='../../public/css/style.css')
-  link(rel='stylesheet', href="../../public/css/story-edit.css")
-  div.container-form
-    form.form-group(action="/stories/edit/" +context._id method="POST" id="useThis")
-      label(for="title")
-        | Story Title:
-      input.form-control(name="titleStory" value = context.titleStory id="title" required type="text" )
-      label(for="location")
-        span.glyphicon.glyphicon-map-marker
-        | Location:
-      input.form-control(name="location" id= "location" required type="text" value = context.location.name)
-      textarea.textBody(name="body" form="useThis" type="text")
-        =context.body
-      button.btn.btn-info.btn-rounded
-        | Edit your story
+  link(rel='stylesheet', href='../../public/css/grid.css')
+  
+  .container
+    .well
+      h1
+        | Edit Your Story
+  .container
+    .well
+      form(action="/stories/edit/" +context._id method="POST" id="useThis")
+        .row
+          h5
+          .row
+            | Story Title:
+            input.form-control(name="titleStory" value = context.titleStory id="title" required type="text" )
+        .row
+          h5
+          .row
+            span.glyphicon.glyphicon-map-marker
+            | Location:
+          input.form-control(name="location" id= "location" required type="text" value = context.location.name)
+        .row
+          textarea.form-control(name="body" form="useThis" type="text")
+            =context.body
+        button.btn.btn-success.btn-rounded
+          | Save Changes
