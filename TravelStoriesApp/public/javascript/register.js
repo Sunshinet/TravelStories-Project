@@ -1,9 +1,9 @@
 /* globals $ toastr */
 
-$(document).ready(function () {
+$(document).ready(() => {
     const regBtn = $('#reg-btn');
 
-    regBtn.on('click', function (event) {
+    regBtn.on('click', (event) => {
         event.preventDefault();
         const usernameForm = $('#username').val();
         const passwordForm = $('#password').val();
@@ -27,6 +27,11 @@ $(document).ready(function () {
             return;
         }
 
+        if ($('#password').val() !== $('#password-repeat').val()) {
+            toastr.error('Passwords do not match!');
+            return;
+        }
+
         if (emailForm.length > 1 && !emailTest) {
             toastr.error('Invalid email');
             return;
@@ -41,11 +46,11 @@ $(document).ready(function () {
                 email: emailForm,
                 bio: bioForm,
             },
-            success: function (data) {
+            success: (data) => {
                 toastr.success('Registration done');
                 window.location = '/auth/sign-in';
             },
-            error: function (request, status, error) {
+            error: (request, status, error) => {
                 toastr.error('Invalid username or password');
             },
         });
