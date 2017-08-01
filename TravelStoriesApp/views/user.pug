@@ -34,16 +34,11 @@ block content
                         =context.username
                         |  has travelled to locations such as 
                         if context.stories
-                            if user
-                                if user.username == context.username
+                            
                                     each story in context.stories
                                         =story.location.name
-                                        |, 
-                                else
-                                    if story.visible
-                                        =story.location.name
-                                        |, 
-                            | and many, many more!
+                                        | , 
+                        | and many, many more!
             .row
                 if context.email != ""
                     if user
@@ -72,7 +67,8 @@ block content
             h1
               =context.username
               |  has not yet published any stories!
-              if user.username == context.username
-                .row
-                  a.invite.btn.btn-info.btn-rounded(href='/stories/create-story')
-                    | Create Your First Story!
+              if user
+                if user.username == context.username
+                  .row
+                      a.invite.btn.btn-info.btn-rounded(href='/stories/create-story')
+                        | Create Your First Story!
