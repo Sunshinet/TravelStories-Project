@@ -32,6 +32,7 @@ textarea{
     height: 80%;
     color: black;
     margin-left: 10%;
+    resize: none;
 }
 .btn.btn-info.btn-rounded{
     display: block;
