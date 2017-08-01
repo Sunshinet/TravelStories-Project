@@ -45,6 +45,11 @@ block content
                         if user.email != context.email
                             a.btn.btn-info.btn-rounded(href='mailto:' + context.email)
                                 | Send an Email
+            .row
+                if context.email != ""
+                    if !user
+                        a.btn.btn-info.btn-rounded(href='mailto:' + context.email)
+                            | Send an Email
     if context.stories.length
       .container
         .well
