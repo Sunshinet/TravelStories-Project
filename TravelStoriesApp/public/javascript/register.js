@@ -13,10 +13,9 @@ $(document).ready(() => {
         const bioForm = $('#bio').val();
 
         const pattern = new RegExp(/^[a-zA-Z0-9._]{3,20}$/);
-        const passPattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/);
-        const emailPattern = new RegExp(`^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\
-        s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\
-        .[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$`);
+        const passPattern = 
+            new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/);
+        const emailPattern = new RegExp(/(.+)@(.+){2,}\.(.+){2,}/);
         const usernameTest = pattern.test(usernameForm);
         const passTest = passPattern.test(passwordForm);
         const emailTest = emailPattern.test(emailForm);
