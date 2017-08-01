@@ -26,9 +26,9 @@ mixin nav()
           a(href='/user/' + user._id)
             =user.username
         li
-          form(action="/auth/sign-out" method="post")
-            button
+          a(href='/auth/sign-out')
               span.glyphicon.glyphicon-log-out
+              | Sign Out
     else
       ul.nav.navbar-nav.navbar-right
         li

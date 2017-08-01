@@ -19,7 +19,7 @@ const attachTo = (app, data) => {
         .get('/', (req, res) => {
             return controller.getWelcomeScreen(req, res);
         })
-        .post('/sign-out', (req, res) => {
+        .get('/sign-out', (req, res) => {
             return controller.signOut(req, res);
         })
         .post('/sign-up', (req, res) => {
