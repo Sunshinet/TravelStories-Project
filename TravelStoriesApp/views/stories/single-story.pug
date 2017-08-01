@@ -1,27 +1,29 @@
 extends ../main
 block content
+  
   link(rel='stylesheet', href='../public/css/story-single.css')
-  div.container
-    div.story
-      h1
-        | Title Story: 
-        =context.titleStory
-      div
+  link(rel='stylesheet', href='../public/css/grid.css')
+
+  .container
+    .well
+      .row
+        h1
+          =context.titleStory
+        h5
+          | by 
+          a(href='/user/' + context.user.id)
+            =context.user.username
+          span.glyphicon.glyphicon-map-marker
+          a(href='/locations/' + context.location._id)
+  .container
+    .well
+      .row
         p
-          | Location: 
-          =context.location.name
-      div
-        | User: 
-        a(href='/user/' + context.user.id)
-          =context.user.username
-      div
-        p
-          | Story Text: 
           =context.body
-      div.edit-story
-        if(user.username==context.user.username)
-          form.form-group(action="/stories/delete/" +context._id method="POST" id="del-form")
-            button#del-btn.btn.btn-success
-              | Delete your story
-          a(href="/stories/edit-story/" + context._id)#edit-btn.btn.btn-success
-            | Edit your story
+  .row
+    if(user.username==context.user.username)
+      form.form-group(action="/stories/delete/" +context._id method="POST" id="del-form")
+        button#del-btn.btn.btn-delete
+          | Delete
+      a(href="/stories/edit-story/" + context._id)#edit-btn.btn.btn-success
+        | Edit
