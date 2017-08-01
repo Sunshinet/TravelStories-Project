@@ -2,7 +2,7 @@ extends ../main
 block content
 
     link(rel='stylesheet', href='../public/css/grid.css')
-    link(rel='stylesheet', href='../public/css/place.css')
+    link(rel='stylesheet', href='../public/css/location.css')
 
     .container
         .well
@@ -10,8 +10,8 @@ block content
                 | All Locations
     .container
         .well
-          each place in context
+          each location in context
                 div
                     h3
-                       a(href='places/' + place.id) 
-                            =place.name
+                       a(href='locations/' + location.id) 
+                            =location.name
