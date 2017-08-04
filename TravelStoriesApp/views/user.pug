@@ -65,6 +65,9 @@ block content
                     span.glyphicon.glyphicon-map-marker
                     a(href='/locations/' + story.location._id)
                         =story.location.name
+                  h6
+                    | Published on:
+                    =story.date
     else
       .container
         .well
