@@ -22,6 +22,9 @@ block content
                             | by 
                             a(href='/user/' + story.user.id)
                                 =story.user.username
+                        h5
+                            | Published on: 
+                            =story.date
             else
                 h3
                     | There are no stories here yet!

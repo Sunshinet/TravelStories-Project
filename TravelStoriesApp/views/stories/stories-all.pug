@@ -23,6 +23,9 @@ block content
                     | by 
                     a(href='/user/' + story.user.id)
                       =story.user.username
+                  h6
+                    | Published on: 
+                    =story.date
                     span.glyphicon.glyphicon-map-marker
                     a(href='/locations/' + story.location._id)
                         =story.location.name

@@ -30,7 +30,7 @@ const init = (data) => {
         },
 
         getEditForm(req, res) {
-            return data.stories.findById(req.params.id) // vzem story s id
+            return data.stories.findById(req.params.id) 
                 .then((result) => {
                     return res.render('stories/edit-form', {
                         context: result[0],
@@ -40,8 +40,8 @@ const init = (data) => {
 
         create(req, res) {
             const story = req.body;
+            console.log(story);
             story.visible = true;
-
             const location = {
                 name: story.location,
             };
@@ -133,6 +133,7 @@ const init = (data) => {
                     dbStory[0].location.name = location.name;
                     dbStory[0].titleStory = story.titleStory;
                     dbStory[0].body = story.body;
+                    dbStory[0].date = story.date;
 
                     user.stories = user.stories || [];
                     user.stories.push({
