@@ -18,6 +18,10 @@ block content
                         h3
                             a(href='/stories/' + story._id)
                                 =story.titleStory
+                        if context.picture
+                            img(src='' + context.picture)
+                        else
+                            img(src='https://cdn3.iconfinder.com/data/icons/glypho-travel/64/beach-umbrella-512.png')
                         h5
                             | by 
                             a(href='/user/' + story.user.id)

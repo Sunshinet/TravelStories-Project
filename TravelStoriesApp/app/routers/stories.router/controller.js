@@ -6,7 +6,6 @@ const init = (data) => {
                     stories.every((story) => {
                         return story.visible === false;
                     });
-
                     return res.render('stories/stories-all', {
                         title: 'All Stories',
                         context: stories,
@@ -40,6 +39,10 @@ const init = (data) => {
 
         create(req, res) {
             const story = req.body;
+            if (!story.picture) {
+                story.picture = 'https://cdn3.iconfinder.com/data/icons/glypho-travel/64/beach-umbrella-512.png';
+            }
+
             story.visible = true;
 
             const location = {
@@ -89,12 +92,14 @@ const init = (data) => {
 
         edit(req, res) {
             const story = req.body;
+            console.log(story);
             const location = {
                 name: story.location,
             };
 
             const storyID = req.params.id;
             const user = req.user;
+            const picture = story.picture;
 
             story.user = {
                 id: user._id,
@@ -119,6 +124,7 @@ const init = (data) => {
                     dbStory[0].location.name = location.name;
                     dbStory[0].titleStory = story.titleStory;
                     dbStory[0].body = story.body;
+                    dbStory[0].picture = picture;
 
                     user.stories = user.stories || [];
                     user.stories.push({
@@ -133,6 +139,7 @@ const init = (data) => {
                         data.stories.updateById(dbStory[0]),
                         data.locations.updateById(dbLocation),
                         data.users.updateById(user),
+                        data.stories.updateById(picture),
                     ]);
                 })
                 .then(() => {

@@ -24,6 +24,11 @@ block content
             | Location:
           input.form-control(name="location" id= "location" required type="text" value = context.location.name)
         .row
+          h5
+          .row
+            | Did you take a noteworthy picture?
+          input.form-control(name="picture" id= "picture" type="url" value = context.picture)
+        .row
           textarea.form-control(name="body" form="useThis" type="text")
             =context.body
         button.btn.btn-success.btn-rounded

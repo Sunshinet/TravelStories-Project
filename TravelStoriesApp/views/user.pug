@@ -61,10 +61,14 @@ block content
                   h3
                     a.story(href='/stories/' + story._id)
                       =story.titleStory
+                  if story.picture
+                      img(src='' + story.picture)
+                  else
+                      img(src='https://cdn3.iconfinder.com/data/icons/glypho-travel/64/beach-umbrella-512.png')
                   h6
                     span.glyphicon.glyphicon-map-marker
                     a(href='/locations/' + story.location._id)
-                        =story.location.name
+                      =story.location.name
     else
       .container
         .well

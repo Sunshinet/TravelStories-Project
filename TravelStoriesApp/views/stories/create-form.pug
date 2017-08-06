@@ -22,6 +22,11 @@ block content
             | Location:
           input.form-control(name="location" id= "location" required type="text" placeholder="Where were you?")
         .row
+          h5
+          .row
+            | Did you take a noteworthy picture?
+          input.form-control(name="picture" id= "picture" type="url" placeholder='URLs only please')
+        .row
           textarea.form-control(name="body" form="useThis" required placeholder="Tell us about your adventures!")
         button.btn.btn-info.btn-rounded
           | Publish

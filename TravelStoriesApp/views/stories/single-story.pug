@@ -2,6 +2,7 @@ extends ../main
 block content
   
   link(rel='stylesheet', href='../public/css/story-single.css')
+  link(rel='stylesheet', href="../../public/css/stories-all.css")
   link(rel='stylesheet', href='../public/css/grid.css')
 
   .container
@@ -16,6 +17,14 @@ block content
           span.glyphicon.glyphicon-map-marker
           a(href='/locations/' + context.location._id)
             =context.location.name
+  .container
+    .well
+      .row
+        if context.picture
+          img(src='' + context.picture)
+        else
+          img(src='https://cdn3.iconfinder.com/data/icons/glypho-travel/64/beach-umbrella-512.png')
+
   .container
     .well
       .row
