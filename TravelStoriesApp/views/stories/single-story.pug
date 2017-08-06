@@ -16,6 +16,11 @@ block content
           span.glyphicon.glyphicon-map-marker
           a(href='/locations/' + context.location._id)
             =context.location.name
+          if context.categoryStory.name
+            span
+            | In 
+            a(href='/categories/' + context.categoryStory._id)
+              =context.categoryStory.name
   .container
     .well
       .row

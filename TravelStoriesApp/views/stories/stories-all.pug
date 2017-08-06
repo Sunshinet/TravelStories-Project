@@ -26,3 +26,8 @@ block content
                     span.glyphicon.glyphicon-map-marker
                     a(href='/locations/' + story.location._id)
                         =story.location.name
+                    if story.categoryStory.name
+                      span
+                      | In 
+                      a(href='/categories/' + story.categoryStory._id)
+                          =story.categoryStory.name

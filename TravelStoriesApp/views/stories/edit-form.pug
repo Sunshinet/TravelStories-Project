@@ -23,6 +23,10 @@ block content
             span.glyphicon.glyphicon-map-marker
             | Location:
           input.form-control(name="location" id= "location" required type="text" value = context.location.name)
+        h5
+          .row
+            | Story Category:
+            input.form-control(name="categoryStory" id="category" required type="text" value = context.categoryStory.name)
         .row
           textarea.form-control(name="body" form="useThis" type="text")
             =context.body

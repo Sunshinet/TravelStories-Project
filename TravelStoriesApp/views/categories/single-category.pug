@@ -1,0 +1,31 @@
+extends ../main
+block content
+
+    link(rel='stylesheet', href='../public/css/grid.css')
+    link(rel='stylesheet', href='../public/css/place.css')
+
+    .container
+        .well
+            h1
+                | All Stories in 
+                =context.name.name
+                | :
+    .container
+        .well
+            if context.stories.length
+                each story in context.stories
+                    .row
+                        h3
+                            a(href='/stories/' + story._id)
+                                =story.titleStory
+                        h5
+                            | by 
+                            a(href='/user/' + story.user.id)
+                                =story.user.username
+                        h5
+                            span.glyphicon.glyphicon-map-marker
+                            a(href='/locations/' + story.location._id)
+                                =story.location.name
+            else
+                h3
+                    | There are no stories here yet!
