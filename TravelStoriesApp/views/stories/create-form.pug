@@ -15,6 +15,9 @@ block content
           .row
             | Story Title:
             input.form-control(name="titleStory" id="title" required type="text" placeholder="What were you doing?")
+          .row
+            | Date:
+            input.form-control(name="date" id="date" required type="date")
         .row
           h5
           .row
@@ -27,6 +30,10 @@ block content
             | Did you take a noteworthy picture?
           input.form-control(name="picture" id= "picture" type="url" placeholder='URLs only please')
         .row
+          h5
+          .row
+            | Story Category:
+            input.form-control(name="categoryStory" id="category" required type="text" placeholder="What's the category of your trip?")
           textarea.form-control(name="body" form="useThis" required placeholder="Tell us about your adventures!")
         button.btn.btn-info.btn-rounded
           | Publish

@@ -29,7 +29,7 @@ const init = (data) => {
         },
 
         getEditForm(req, res) {
-            return data.stories.findById(req.params.id)  // vzem story s id
+            return data.stories.findById(req.params.id) 
                 .then((result) => {
                     return res.render('stories/edit-form', {
                         context: result[0],
@@ -42,11 +42,13 @@ const init = (data) => {
             if (!story.picture) {
                 story.picture = 'https://cdn3.iconfinder.com/data/icons/glypho-travel/64/beach-umbrella-512.png';
             }
-
             story.visible = true;
-
             const location = {
                 name: story.location,
+            };
+
+            const category = {
+                name: story.categoryStory,
             };
 
             const user = req.user;
@@ -61,8 +63,9 @@ const init = (data) => {
                 .all([
                     data.stories.create(story),
                     data.locations.findOrCreateBy(location),
+                    data.categories.findOrCreateBy(category),
                 ])
-                .then(([dbStory, dbLocation]) => {
+                .then(([dbStory, dbLocation, dbCategory]) => {
                     dbLocation.name = story.location;
                     dbLocation.stories = dbLocation.stories || [];
                     dbLocation.stories.push(dbStory._id);
@@ -72,6 +75,14 @@ const init = (data) => {
                         name: dbLocation.name,
                     };
 
+                    dbStory.categoryStory = {
+                        _id: dbCategory._id,
+                        name: dbCategory.name,
+                    };
+
+                    dbCategory.name = story.categoryStory;
+                    dbCategory.stories = dbCategory.stories || [];
+                    dbCategory.stories.push(dbStory._id);
                     user.stories = user.stories || [];
                     user.stories.push(dbStory._id);
 
@@ -79,6 +90,7 @@ const init = (data) => {
                         data.stories.updateById(dbStory),
                         data.locations.updateById(dbLocation),
                         data.users.updateById(user),
+                        data.categories.updateById(dbCategory),
                     ]);
                 })
                 .then(() => {
@@ -125,7 +137,7 @@ const init = (data) => {
                     dbStory[0].titleStory = story.titleStory;
                     dbStory[0].body = story.body;
                     dbStory[0].picture = picture;
-
+                    dbStory[0].date = story.date;
                     user.stories = user.stories || [];
                     user.stories.push({
                         _id: dbStory[0]._id,

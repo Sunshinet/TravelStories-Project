@@ -1,0 +1,16 @@
+extends ../main
+block content
+    link(rel='stylesheet', href='../public/css/grid.css')
+    link(rel='stylesheet', href='../public/css/place.css')
+
+    .container
+        .well
+            h1
+                | All Categories
+    .container
+        .well
+          each category in context
+                div
+                    h3
+                       a(href='categories/' + category.id) 
+                            =category.name.name

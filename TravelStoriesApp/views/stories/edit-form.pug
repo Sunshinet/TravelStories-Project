@@ -17,12 +17,19 @@ block content
           .row
             | Story Title:
             input.form-control(name="titleStory" value = context.titleStory id="title" required type="text" )
+          .row
+            | Date:
+            input.form-control(name="date" id="date" value = context.date required type="date")
         .row
           h5
           .row
             span.glyphicon.glyphicon-map-marker
             | Location:
           input.form-control(name="location" id= "location" required type="text" value = context.location.name)
+        h5
+          .row
+            | Story Category:
+            input.form-control(name="categoryStory" id="category" required type="text" value = context.categoryStory.name)
         .row
           h5
           .row

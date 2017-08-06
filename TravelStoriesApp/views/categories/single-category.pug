@@ -8,7 +8,7 @@ block content
         .well
             h1
                 | All Stories in 
-                =context.name
+                =context.name.name
                 | :
     .container
         .well
@@ -18,17 +18,14 @@ block content
                         h3
                             a(href='/stories/' + story._id)
                                 =story.titleStory
-                        if context.picture
-                            img(src='' + context.picture)
-                        else
-                            img(src='https://cdn3.iconfinder.com/data/icons/glypho-travel/64/beach-umbrella-512.png')
                         h5
                             | by 
                             a(href='/user/' + story.user.id)
                                 =story.user.username
                         h5
-                            | Published on: 
-                            =story.date
+                            span.glyphicon.glyphicon-map-marker
+                            a(href='/locations/' + story.location._id)
+                                =story.location.name
             else
                 h3
                     | There are no stories here yet!
